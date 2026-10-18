@@ -8,6 +8,7 @@ import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -15,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import static com.seosean.showspawntime.config.MainConfiguration.FastReviveCoolDownRenderType;
 import static com.seosean.showspawntime.config.MainConfiguration.config;
 
+@Pseudo
 @Mixin(value = MainConfiguration.class, remap = false)
 public class MixinMainConfiguration {
 

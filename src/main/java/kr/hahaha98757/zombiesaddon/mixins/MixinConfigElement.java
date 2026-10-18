@@ -20,7 +20,7 @@ public class MixinConfigElement {
     private ConfigCategory ctgy;
 
     @Inject(method = "getComment", at = @At("HEAD"), cancellable = true)
-    private void getComment(CallbackInfoReturnable<String> cir) {
+    private void getTranslatedComment(CallbackInfoReturnable<String> cir) {
         if (!isProperty) cir.setReturnValue(ctgy.getComment());
         cir.setReturnValue(prop.comment.startsWith("zombiesaddon") ? ToolsKt.getTranslatedString(prop.comment) : prop.comment);
     }

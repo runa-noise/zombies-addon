@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Minecraft.class)
 public class MixinMinecraft {
     @Inject(method = "refreshResources", at = @At("HEAD"))
-    private void refreshResources(CallbackInfo ci) {
+    private void addCpsReloading(CallbackInfo ci) {
         CustomPlaySoundLoader.INSTANCE.loadFile();
     }
 }

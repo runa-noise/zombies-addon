@@ -16,13 +16,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class MixinGuiIngame {
 
     @Inject(method = "renderHotbarItem", at = @At("HEAD"), cancellable = true)
-    private void renderHotbarItem(int index, int xPos, int yPos, float partialTicks, EntityPlayer player, CallbackInfo ci) {
+    private void cancelHotbarRendering(int index, int xPos, int yPos, float partialTicks, EntityPlayer player, CallbackInfo ci) {
         if (!LastWeapons.INSTANCE.isWork()) return;
         ci.cancel();
     }
 
     @Redirect(method = "renderScoreboard", at = @At(value = "INVOKE", target = "Lnet/minecraft/scoreboard/ScorePlayerTeam;formatPlayerName(Lnet/minecraft/scoreboard/Team;Ljava/lang/String;)Ljava/lang/String;"))
-    private String redirectFormatPlayerName(Team team, String string) {
+    private String modifyZombiesLeftText(Team team, String string) {
         return BetterZombiesLeft.INSTANCE.modifyFormattedName(ScorePlayerTeam.formatPlayerName(team, string));
     }
 }

@@ -15,14 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Render.class)
 public class MixinRender {
     @Inject(method = "doRenderShadowAndFire", at = @At("HEAD"), cancellable = true)
-    private void doRenderShadowAndFire(Entity entityIn, double x, double y, double z, float yaw, float partialTicks, CallbackInfo ci) {
+    private void cancelRendering(Entity entityIn, double x, double y, double z, float yaw, float partialTicks, CallbackInfo ci) {
         if (!(entityIn instanceof EntityPlayer)) return;
         PlayerVisibility pv = PlayerVisibility.INSTANCE;
         if (pv.modeOf((EntityPlayer) entityIn) == PlayerVisibility.Mode.SEMI_PV && !pv.getInLast()) ci.cancel();
     }
 
     @Inject(method = "renderEntityOnFire", at = @At("HEAD"), cancellable = true)
-    private void renderEntityOnFirePre(Entity entity, double x, double y, double z, float partialTicks, CallbackInfo ci) {
+    private void applySemiPv(Entity entity, double x, double y, double z, float partialTicks, CallbackInfo ci) {
         if (!(entity instanceof EntityPlayer)) return;
         PlayerVisibility pv = PlayerVisibility.INSTANCE;
         PlayerVisibility.Mode mode = pv.modeOf((EntityPlayer) entity);
@@ -36,7 +36,7 @@ public class MixinRender {
     }
 
     @Inject(method = "renderEntityOnFire", at = @At("RETURN"))
-    private void renderEntityOnFirePost(Entity entity, double x, double y, double z, float partialTicks, CallbackInfo ci) {
+    private void restoreSemiPv(Entity entity, double x, double y, double z, float partialTicks, CallbackInfo ci) {
         if (!(entity instanceof EntityPlayer)) return;
         PlayerVisibility pv = PlayerVisibility.INSTANCE;
         if (pv.modeOf((EntityPlayer) entity) == PlayerVisibility.Mode.SEMI_PV) {

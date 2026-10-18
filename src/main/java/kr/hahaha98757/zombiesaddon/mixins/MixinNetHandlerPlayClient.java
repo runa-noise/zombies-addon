@@ -11,27 +11,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = NetHandlerPlayClient.class, priority = 900)
 public class MixinNetHandlerPlayClient {
     @ModifyVariable(method = "handleSoundEffect", at = @At("HEAD"), argsOnly = true)
-    private S29PacketSoundEffect modifyParameter(S29PacketSoundEffect packet) {
+    private S29PacketSoundEffect fixRifleSound(S29PacketSoundEffect packet) {
         return Patcher.INSTANCE.fixRifleSound(packet);
     }
 
     @Inject(method = "handleSoundEffect", at = @At("HEAD"))
-    private void handleSoundEffect(S29PacketSoundEffect packetIn, CallbackInfo ci) {
+    private void onSound(S29PacketSoundEffect packetIn, CallbackInfo ci) {
         MixinToolsKt.onSound(packetIn);
     }
 
     @Inject(method = "handleTitle" , at = @At("HEAD"))
-    private void handleTitle(S45PacketTitle packetIn, CallbackInfo ci) {
+    private void onTitle(S45PacketTitle packetIn, CallbackInfo ci) {
         MixinToolsKt.onTitle(packetIn);
     }
 
     @Inject(method = "handleConfirmTransaction", at = @At("HEAD"))
-    private void handleConfirmTransaction(S32PacketConfirmTransaction packetIn, CallbackInfo ci) {
+    private void onInventoryPacket(S32PacketConfirmTransaction packetIn, CallbackInfo ci) {
         MixinToolsKt.onInventoryPacket(packetIn);
     }
 
     @Inject(method = "handleTimeUpdate", at = @At("HEAD"))
-    private void handleTimeUpdate(S03PacketTimeUpdate packetIn, CallbackInfo ci) {
+    private void onTimeUpdate(S03PacketTimeUpdate packetIn, CallbackInfo ci) {
         MixinToolsKt.onTimeUpdate(packetIn);
     }
 }

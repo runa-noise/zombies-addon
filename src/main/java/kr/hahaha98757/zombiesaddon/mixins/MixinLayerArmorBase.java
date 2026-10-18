@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LayerArmorBase.class)
 public class MixinLayerArmorBase {
     @Inject(method = "renderGlint", at = @At("RETURN"))
-    private void renderGlint(EntityLivingBase entitylivingbaseIn, ModelBase modelbaseIn, float p_177183_3_, float p_177183_4_, float partialTicks, float p_177183_6_, float p_177183_7_, float p_177183_8_, float scale, CallbackInfo ci) {
+    private void reapplySemiPv(EntityLivingBase entitylivingbaseIn, ModelBase modelbaseIn, float p_177183_3_, float p_177183_4_, float partialTicks, float p_177183_6_, float p_177183_7_, float p_177183_8_, float scale, CallbackInfo ci) {
         if (entitylivingbaseIn instanceof EntityPlayer)
             PlayerVisibility.INSTANCE.applySemiPv((EntityPlayer) entitylivingbaseIn);
     }

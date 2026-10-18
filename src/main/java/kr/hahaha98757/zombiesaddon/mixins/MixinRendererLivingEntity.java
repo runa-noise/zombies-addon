@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(RendererLivingEntity.class)
 public class MixinRendererLivingEntity {
     @Inject(method = "canRenderName(Lnet/minecraft/entity/EntityLivingBase;)Z", at = @At("HEAD"), cancellable = true)
-    private void canRenderName(EntityLivingBase entity, CallbackInfoReturnable<Boolean> cir) {
+    private void skipOrRenderNameTag(EntityLivingBase entity, CallbackInfoReturnable<Boolean> cir) {
         int pass = PlayerVisibility.INSTANCE.getPass();
 
         if (pass == 1) cir.setReturnValue(false);
@@ -27,12 +27,12 @@ public class MixinRendererLivingEntity {
     }
 
     @Inject(method = "doRender(Lnet/minecraft/entity/EntityLivingBase;DDDFF)V", at = @At("HEAD"))
-    private void doRenderPre(EntityLivingBase entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
+    private void applySemiPv(EntityLivingBase entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
         if (entity instanceof EntityPlayer) PlayerVisibility.INSTANCE.applySemiPv((EntityPlayer) entity);
     }
 
     @Inject(method = "doRender(Lnet/minecraft/entity/EntityLivingBase;DDDFF)V", at = @At("RETURN"))
-    private void doRenderPost(EntityLivingBase entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
+    private void restoreSemiPv(EntityLivingBase entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
         if (entity instanceof EntityPlayer) PlayerVisibility.INSTANCE.restoreSemiPv();
     }
 }

@@ -18,7 +18,7 @@ public abstract class MixinRenderPlayer {
     public abstract void doRender(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks);
 
     @Inject(method = "doRender(Lnet/minecraft/client/entity/AbstractClientPlayer;DDDFF)V", at = @At("HEAD"), cancellable = true)
-    private void doRender(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
+    private void applyPv(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
         PlayerVisibility pv = PlayerVisibility.INSTANCE;
         if (pv.getPass() != 0) return;
 
