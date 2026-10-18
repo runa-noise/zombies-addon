@@ -188,6 +188,8 @@ zombiesaddon.config.pvSemiPvMaxAlpha=Semi PV Maximum Alpha
 zombiesaddon.config.pvSemiPvMaxAlpha.description=The maximum alpha for Semi Player Visibility.
 zombiesaddon.config.pvSemiPvMode=Semi PV Mode
 zombiesaddon.config.pvSemiPvMode.description=The mode for Semi Player Visibility.
+zombiesaddon.config.pvFastSemiPv=Fast Semi PV
+zombiesaddon.config.pvFastSemiPv.description=It offers better compatibility and performance, but the player layers appear overlapped.
 
 zombiesaddon.config.blockAlarmDefault=Default Toggle State
 zombiesaddon.config.blockAlarmDefault.description=Toggle state when the game starts.

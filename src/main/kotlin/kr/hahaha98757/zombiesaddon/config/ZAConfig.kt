@@ -49,6 +49,7 @@ object ZAConfig {
     var pvSemiPvMaxAlpha = 1.0
         get() = if (field < pvSemiPvMinAlpha) pvSemiPvMinAlpha else field
     var pvSemiPvMode = SemiPvMode.LINEAR
+    var pvFastSemiPv = false
 
     var blockAlarmDefault = false
     var blockAlarmText = false
@@ -235,6 +236,14 @@ object ZAConfig {
             "$pvSemiPvModeKey.description",
             SemiPvMode.arrays
         )).string)
+
+        val pvFastSemiPvKey = "zombiesaddon.config.pvFastSemiPv"
+        pvFastSemiPv = addOption(categoryPv, pvFastSemiPvKey, config.get(
+            categoryPv.name,
+            "pvFastSemiPv",
+            false,
+            "$pvFastSemiPvKey.description"
+        )).boolean
 
 
         // Block Alarm

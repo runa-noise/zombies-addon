@@ -2,31 +2,11 @@ package kr.hahaha98757.zombiesaddon.utils
 
 import kr.hahaha98757.zombiesaddon.events.ServerTickEvent
 import kr.hahaha98757.zombiesaddon.game.GameManager
-import kr.hahaha98757.zombiesaddon.modules.PvUtils
-import net.minecraft.client.renderer.GlStateManager
-import net.minecraft.entity.Entity
 import net.minecraft.network.play.server.S03PacketTimeUpdate
 import net.minecraft.network.play.server.S29PacketSoundEffect
 import net.minecraft.network.play.server.S32PacketConfirmTransaction
 import net.minecraft.network.play.server.S45PacketTitle
 import net.minecraftforge.common.MinecraftForge
-import org.lwjgl.opengl.GL11
-
-fun renderPre(entity: Entity) {
-    if (!PvUtils.isSemiPv(entity)) return
-    GlStateManager.color(1f, 1f, 1f, PvUtils.getAlpha(entity))
-    GlStateManager.depthMask(false)
-    GlStateManager.enableBlend()
-    GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA)
-    GlStateManager.alphaFunc(GL11.GL_GREATER, 0.003921569f) // 0.003921569f = 1/255
-}
-
-fun renderPost(entity: Entity) {
-    if (!PvUtils.isSemiPv(entity)) return
-    GlStateManager.disableBlend()
-    GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f)
-    GlStateManager.depthMask(true)
-}
 
 private var aaR10 = false
 fun onSound(packet: S29PacketSoundEffect) {

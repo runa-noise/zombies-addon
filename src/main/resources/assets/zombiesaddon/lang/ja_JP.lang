@@ -188,6 +188,8 @@ zombiesaddon.config.pvSemiPvMaxAlpha=Semi PVの透明度の最大値
 zombiesaddon.config.pvSemiPvMaxAlpha.description=Semi Player Visibilityの透明度の最大値です。
 zombiesaddon.config.pvSemiPvMode=Semi PVモード
 zombiesaddon.config.pvSemiPvMode.description=Semi Player Visibilityのモードです。
+zombiesaddon.config.pvFastSemiPv=迅速なSemi PV
+zombiesaddon.config.pvFastSemiPv.description=より優れた互換性とパフォーマンスを提供しますが、プレイヤーレイヤーが重なって表示されます。
 
 zombiesaddon.config.blockAlarmDefault=デフォルトの切り替え状態
 zombiesaddon.config.blockAlarmDefault.description=ゲーム開始時の切り替え状態です。
