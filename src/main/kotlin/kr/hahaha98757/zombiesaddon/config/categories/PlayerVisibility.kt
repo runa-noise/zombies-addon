@@ -2,7 +2,6 @@ package kr.hahaha98757.zombiesaddon.config.categories
 
 import kr.hahaha98757.zombiesaddon.enums.SemiPvMode
 import net.minecraftforge.common.config.Configuration
-import net.minecraftforge.fml.client.config.GuiConfigEntries
 
 class PlayerVisibility: AbstractCategory() {
     override var categoryName = "Player Visibility"
@@ -27,11 +26,7 @@ class PlayerVisibility: AbstractCategory() {
         fastSemiPv = addOption(config.get(categoryName, "fastSemiPv", false)).boolean
         semiPvMode = SemiPvMode.fromText(addOption(config.get(categoryName, "semiPvMode", SemiPvMode.LINEAR.toString(), "", SemiPvMode.arrays)).string)
         semiPvRange = addOption(config.get(categoryName, "semiPvRange", 5.0)).double
-        semiPvMinAlpha = addOption(config.get(categoryName, "semiPvMinAlpha", 0.0, "", 0.0, 1.0).apply {
-            configEntryClass = GuiConfigEntries.NumberSliderEntry::class.java
-        }).double
-        semiPvMaxAlpha = addOption(config.get(categoryName, "semiPvMaxAlpha", 1.0, "", 0.0, 1.0).apply {
-            configEntryClass = GuiConfigEntries.NumberSliderEntry::class.java
-        }).double
+        semiPvMinAlpha = addOption(config.get(categoryName, "semiPvMinAlpha", 0.0, "", 0.0, 1.0)).double
+        semiPvMaxAlpha = addOption(config.get(categoryName, "semiPvMaxAlpha", 1.0, "", 0.0, 1.0)).double
     }
 }
