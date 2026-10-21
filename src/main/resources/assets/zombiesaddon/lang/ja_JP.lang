@@ -253,6 +253,8 @@ zombiesaddon.config.autoRejoin.default=デフォルトの切り替え状態
 zombiesaddon.config.autoRejoin.default.comment=ゲーム開始時の切り替え状態です。
 zombiesaddon.config.autoRejoin.displayText=テキストを表示
 zombiesaddon.config.autoRejoin.displayText.comment=Auto Rejoinの状態を表示するテキストです。
+zombiesaddon.config.autoRejoin.durationTimes=持続時間
+zombiesaddon.config.autoRejoin.durationTimes.comment=この時間中、再接続を試みます。
 
 zombiesaddon.config.lastWeapons.enable=Last Weaponsを有効化
 zombiesaddon.config.lastWeapons.enable.comment=Last Weaponsを有効または無効にします。

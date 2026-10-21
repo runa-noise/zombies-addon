@@ -253,6 +253,8 @@ zombiesaddon.config.autoRejoin.default=Default Toggle State
 zombiesaddon.config.autoRejoin.default.comment=Toggle state when the game starts.
 zombiesaddon.config.autoRejoin.displayText=Display Text
 zombiesaddon.config.autoRejoin.displayText.comment=Display a text with state of Auto Rejoin.
+zombiesaddon.config.autoRejoin.durationTimes=Duration Times
+zombiesaddon.config.autoRejoin.durationTimes.comment=During this time, it will attempt to rejoin.
 
 zombiesaddon.config.lastWeapons.enable=Enable Last Weapons
 zombiesaddon.config.lastWeapons.enable.comment=Enable or disable Last Weapons.

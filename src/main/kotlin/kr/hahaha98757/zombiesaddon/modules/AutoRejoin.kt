@@ -16,7 +16,7 @@ object AutoRejoin: ToggleableModule("Auto Rejoin", ZAConfig.autoRejoin.default) 
     override fun onRoundStart(event: RoundStartEvent) {
         addTranslatedChat("zombiesaddon.modules.autoRejoin.rejoining")
         sendChat("/l")
-        RepeatedTask(endTask = { sendChat("/rejoin") }) {
+        RepeatedTask(ZAConfig.autoRejoin.durationTimes, endTask = { sendChat("/rejoin") }) {
             if (Scoreboard.isNotZombies) {
                 sendChat("/rejoin")
                 RepeatedTask.stop()
