@@ -28,7 +28,7 @@ object CommandRecorder: CustomCommandBase() {
     override fun addTabCompletionOptions(sender: ICommandSender?, args: Array<String?>, pos: BlockPos?) =
         when (args.size) {
             1 -> getListOfStringsMatchingLastWord(args, "category")
-            2 if args[0] == "category" -> getListOfStringsMatchingLastWord(args, ZAConfig.recorderDefaultCategory)
+            2 if args[0] == "category" -> getListOfStringsMatchingLastWord(args, ZAConfig.recorder.defaultCategory)
             else -> null
         }
 }

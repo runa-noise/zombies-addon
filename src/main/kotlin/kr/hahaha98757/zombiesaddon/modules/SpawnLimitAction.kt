@@ -18,20 +18,20 @@ object SlaHandler: AlwaysEnableModule("Spawn Limit Action") {
         val rooms = Sla.sla?.rooms ?: return
         var y = 0
         for (room in rooms) {
-            if (!ZAConfig.slaUnactivatedWindows && room.activeWindows == 0) continue
+            if (!ZAConfig.sla.showInactiveWindows && room.activeWindows == 0) continue
             fr.drawStringWithShadow(room.toString(), 1f, 1f + fr.FONT_HEIGHT * y++, 0xffffff)
         }
     }
 
     override fun onRoundStart(event: RoundStartEvent) {
-        if (!ZAConfig.slaAutoSla) return
+        if (!ZAConfig.sla.autoSla) return
         if (event.game.round != 1) return
         val map = event.game.gameMode.map
         runCatching { Sla.on(map) }
     }
 
     override fun onGameEnd(event: GameEndEvent) {
-        if (!ZAConfig.slaAutoSla) return
+        if (!ZAConfig.sla.autoSla) return
         Sla.off()
     }
 }

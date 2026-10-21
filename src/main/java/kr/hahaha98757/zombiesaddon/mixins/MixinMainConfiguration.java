@@ -23,7 +23,7 @@ public class MixinMainConfiguration {
     @Inject(method = "ConfigLoad", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/common/config/Configuration;save()V"))
     private void beforeSave(CallbackInfo ci) {
         try {
-            if (ZAConfig.INSTANCE.getSpeedrunMode()) {
+            if (ZAConfig.INSTANCE.getGeneral().getSpeedrunMode()) {
                 Property propertyPowerupAlertToggle = config.get(Configuration.CATEGORY_GENERAL, "Powerup Alert", true, "Remind you when this is a powerup-round. Start counting down when a powerup spawns");
                 propertyPowerupAlertToggle.set(false);
                 MainConfiguration.PowerupAlertToggle = false;
@@ -47,7 +47,7 @@ public class MixinMainConfiguration {
         } catch (Throwable ignored) {}
 
         try {
-            if (ZAConfig.INSTANCE.getToggleBetterZombiesLeft()) {
+            if (ZAConfig.INSTANCE.getModules().getEnableBetterZombiesLeft()) {
                 Property propertyWave3LeftNotice = config.get(Configuration.CATEGORY_GENERAL, "Wave 3rd Left Notice", true, "Enhance the Sidebar which shows the amount of zombies in wave 3rd in DE/BB.");
                 propertyWave3LeftNotice.set(false);
                 MainConfiguration.Wave3LeftNotice = false;
@@ -59,12 +59,12 @@ public class MixinMainConfiguration {
     @Inject(method = "ConfigLoad", at = @At("TAIL"))
     private void afterSave(CallbackInfo ci) {
         try {
-            if (ZAConfig.INSTANCE.getSpeedrunMode())
+            if (ZAConfig.INSTANCE.getGeneral().getEnableMod())
                 ToolsKt.addTranslatedChat("zombiesaddon.messages.disableUnlegitSst");
         } catch (Throwable ignored) {}
 
         try {
-            if (ZAConfig.INSTANCE.getToggleBetterZombiesLeft())
+            if (ZAConfig.INSTANCE.getModules().getEnableBetterZombiesLeft())
                 ToolsKt.addTranslatedChat("zombiesaddon.messages.disableWave3LeftNotice");
         } catch (Throwable ignored) {}
     }

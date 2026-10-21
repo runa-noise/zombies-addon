@@ -18,7 +18,7 @@ class Timer(private val world: World) {
         private set
     private var stop = false
 
-    private val isClientMode get() = ZAConfig.internalTimerMode == Mode.CLIENT
+    private val isClientMode get() = ZAConfig.internalTimer.mode == Mode.CLIENT
 
     val gameTick get() = if (!isClientMode && source == TimerSource.SERVER) serverTimer.gameTick
     else clientTimer.gameTick

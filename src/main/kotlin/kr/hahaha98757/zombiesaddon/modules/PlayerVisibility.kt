@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL14
 import kotlin.math.sqrt
 
-object PlayerVisibility: ToggleableModule("Player Visibility", ZAConfig.pvDefault) {
+object PlayerVisibility: ToggleableModule("Player Visibility", ZAConfig.pv.default) {
     override fun getKeyBinding() = KeyBindings.togglePv
     override fun addToggleText(enabled: Boolean) =
         addTranslatedChat("zombiesaddon.modules.general.toggled", "Player Visibility", if (enabled) "§aon" else "§coff")
@@ -30,9 +30,9 @@ object PlayerVisibility: ToggleableModule("Player Visibility", ZAConfig.pvDefaul
         if (player == mc.thePlayer || player.isPlayerSleeping) return Mode.NONE
 
         val distance = mc.thePlayer.getDistanceToEntity(player)
-        if (distance <= ZAConfig.pvRange) return Mode.PV
-        if (!ZAConfig.pvToggleSemiPv) return Mode.NONE
-        if (distance > ZAConfig.pvSemiPvRange) return Mode.NONE
+        if (distance <= ZAConfig.pv.range) return Mode.PV
+        if (!ZAConfig.pv.enableSemiPv) return Mode.NONE
+        if (distance > ZAConfig.pv.semiPvRange) return Mode.NONE
         if (player.isInvisibleToPlayer(mc.thePlayer)) return Mode.NONE
         return Mode.SEMI_PV
     }
@@ -42,7 +42,7 @@ object PlayerVisibility: ToggleableModule("Player Visibility", ZAConfig.pvDefaul
         GlStateManager.enableBlend()
         GL14.glBlendColor(0f, 0f, 0f, getAlpha(player))
         GlStateManager.blendFunc(GL11.GL_CONSTANT_ALPHA, GL11.GL_ONE_MINUS_CONSTANT_ALPHA)
-        if (ZAConfig.pvFastSemiPv) GlStateManager.depthMask(false)
+        if (ZAConfig.pv.fastSemiPv) GlStateManager.depthMask(false)
         else GlStateManager.depthFunc(GL11.GL_EQUAL)
     }
 
@@ -83,15 +83,15 @@ object PlayerVisibility: ToggleableModule("Player Visibility", ZAConfig.pvDefaul
     }
 
     fun getAlpha(player: EntityPlayer): Float {
-        val mode = ZAConfig.pvSemiPvMode
+        val mode = ZAConfig.pv.semiPvMode
         if (mode == SemiPvMode.FIXED)
-            return ZAConfig.pvSemiPvMinAlpha.toFloat()
+            return ZAConfig.pv.semiPvMinAlpha.toFloat()
 
         val distance = mc.thePlayer.getDistanceToEntity(player)
-        val pvRange = ZAConfig.pvRange
-        val semiPvRange = ZAConfig.pvSemiPvRange
-        val minAlpha = ZAConfig.pvSemiPvMinAlpha
-        val maxAlpha = ZAConfig.pvSemiPvMaxAlpha
+        val pvRange = ZAConfig.pv.range
+        val semiPvRange = ZAConfig.pv.semiPvRange
+        val minAlpha = ZAConfig.pv.semiPvMinAlpha
+        val maxAlpha = ZAConfig.pv.semiPvMaxAlpha
 
         val ratio = ((pvRange - distance) / (pvRange - semiPvRange)).coerceIn(0.0, 1.0)
         val factor = when (mode) {

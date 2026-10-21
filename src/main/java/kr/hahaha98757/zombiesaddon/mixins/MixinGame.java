@@ -13,7 +13,7 @@ import xyz.stachel.zombiesutils.timer.Game;
 public class MixinGame {
     @Inject(method = "record", at = @At("HEAD"), cancellable = true)
     private void disableRecorder(CallbackInfo ci) {
-        if (ZAConfig.INSTANCE.getRecorderToggle()) ci.cancel();
+        if (ZAConfig.INSTANCE.getRecorder().getEnable()) ci.cancel();
     }
 
 }

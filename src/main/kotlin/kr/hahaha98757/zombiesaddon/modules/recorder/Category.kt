@@ -33,6 +33,6 @@ class Category {
     fun getByGameMode(gameMode: GameMode) = categoryFiles.first { it.gameMode == gameMode }
 
     companion object {
-        var selectedCategory = ZAConfig.recorderDefaultCategory
+        var selectedCategory = ZAConfig.recorder.defaultCategory
     }
 }

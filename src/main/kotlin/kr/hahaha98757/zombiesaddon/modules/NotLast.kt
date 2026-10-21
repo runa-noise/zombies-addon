@@ -69,7 +69,7 @@ object NotLast: Module("Not Last") {
         addTranslatedChat("zombiesaddon.modules.notLast.printLast", toString())
     }
 
-    override fun isEnable() = ZAConfig.toggleNotLast
+    override fun isEnable() = ZAConfig.modules.enableNotLast
 
     private fun getComma() = getTranslatedString("zombiesaddon.modules.notLast.comma").let {
         if (it.endsWith("{space}")) "${it.removeSuffix("{space}")} "

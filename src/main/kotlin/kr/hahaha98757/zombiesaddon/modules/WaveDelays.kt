@@ -23,7 +23,7 @@ object WaveDelays: Module("Wave Delays") {
             if (isDisable()) return
             if (!isEnable()) return
 
-            offset = if (offsetMode != OffsetMode.RL_MODE) ZAConfig.waveDelaysRlModeOffset else 0
+            offset = if (offsetMode != OffsetMode.RL_MODE) ZAConfig.waveDelays.rlModeOffset else 0
             addChat("§eWave Delays: " + getTranslatedString("zombiesaddon.modules.general.toggled", true, "Offset Mode", if (offsetMode != OffsetMode.RL_MODE) "§aRL Mode" else "§coff"))
             offsetMode = if (offsetMode != OffsetMode.RL_MODE) OffsetMode.RL_MODE else OffsetMode.OFF
         }
@@ -31,7 +31,7 @@ object WaveDelays: Module("Wave Delays") {
             if (isDisable()) return
             if (!isEnable()) return
 
-            offset = if (offsetMode != OffsetMode.WRATH_MODE) ZAConfig.waveDelaysWrathModeOffset else 0
+            offset = if (offsetMode != OffsetMode.WRATH_MODE) ZAConfig.waveDelays.wrathModeOffset else 0
             addChat("§eWave Delays: " + getTranslatedString("zombiesaddon.modules.general.toggled", true, "Offset Mode", if (offsetMode != OffsetMode.WRATH_MODE) "§aWrath Mode" else "§coff"))
             offsetMode = if (offsetMode != OffsetMode.WRATH_MODE) OffsetMode.WRATH_MODE else OffsetMode.OFF
         }
@@ -49,11 +49,11 @@ object WaveDelays: Module("Wave Delays") {
         var faded: Boolean
         var color = "§e"
 
-        if (ZAConfig.waveDelaysHighlightStyle == HighlightStyle.ZOMBIES_ADDON) for (i in waves.indices.reversed()) {
+        if (ZAConfig.waveDelays.highlightStyle == HighlightStyle.ZOMBIES_ADDON) for (i in waves.indices.reversed()) {
             val waveTicks = waves[i].ticks + offset
             if (roundTicks >= waveTicks) {
-                if (ZAConfig.waveDelaysHidePassedWave && roundTicks > waveTicks) break
-                val str = "➤ ${ZAConfig.waveDelaysTextStyle}"
+                if (ZAConfig.waveDelays.hidePassedWave && roundTicks > waveTicks) break
+                val str = "➤ ${ZAConfig.waveDelays.textStyle}"
                 fr.drawStringWithShadow("§5➤ ", HudUtils.getWaveDelaysStrX(str), HudUtils.getWaveDelaysStrY(size, i), 0)
                 break
             }
@@ -64,22 +64,22 @@ object WaveDelays: Module("Wave Delays") {
 
             val bossColor = arrayOf("", "")
             for (prefix in wave.prefixes) {
-                if (!ZAConfig.waveDelaysBossColor) break
+                if (!ZAConfig.waveDelays.bossColor) break
                 if (prefix != Prefix.BOSS && prefix != Prefix.GIANT && prefix != Prefix.OLD_ONE) continue
                 bossColor[0] = getBossColor1(game.gameMode, round, i+1)
                 if (game.gameMode.map == ZombiesMap.ALIEN_ARCADIUM) bossColor[1] = getBossColor2(round, i+1)
             }
 
-            val waveText = when (ZAConfig.waveDelaysTextStyle) {
+            val waveText = when (ZAConfig.waveDelays.textStyle) {
                 WDTextStyle.ZOMBIES_ADDON -> "W${i+1}: ${bossColor[0] + getMinutesString(waveTicks)}:${bossColor[1] + getSecondsString(waveTicks)}.${getTenthSecondsString(waveTicks)}"
                 WDTextStyle.DETAILS -> "W${i+1}: ${bossColor[0] + getMinutesString(waveTicks)}:${bossColor[1] + getSecondsString(waveTicks)}.${getHundredthSecondsString(waveTicks)}"
                 WDTextStyle.SST -> "W${i+1} ${bossColor[0] + getMinutesString(waveTicks, true)}:${bossColor[1] + getSecondsString(waveTicks)}"
             }
 
-            if (ZAConfig.waveDelaysHighlightStyle == HighlightStyle.ZOMBIES_ADDON) {
+            if (ZAConfig.waveDelays.highlightStyle == HighlightStyle.ZOMBIES_ADDON) {
                 if (roundTicks >= waveTicks + DESPAWN_TICK)
                     fr.drawStringWithShadow("§c$waveText", HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
-                else if (roundTicks >= waveTicks) if (roundTicks != waveTicks && ZAConfig.waveDelaysHidePassedWave) continue
+                else if (roundTicks >= waveTicks) if (roundTicks != waveTicks && ZAConfig.waveDelays.hidePassedWave) continue
                     else fr.drawStringWithShadow("§a$waveText", HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
                 else if (roundTicks > waveTicks - 60)
                     fr.drawStringWithShadow("§e$waveText", HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
@@ -87,8 +87,8 @@ object WaveDelays: Module("Wave Delays") {
                     fr.drawStringWithShadow("§8$waveText", HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
 
                 drawPrefixes(waveText, wave, i, size)
-            } else if (ZAConfig.waveDelaysHighlightStyle == HighlightStyle.ZOMBIES_UTILS) {
-                faded = if (roundTicks > waveTicks) if (!ZAConfig.waveDelaysHidePassedWave) true else continue else false
+            } else if (ZAConfig.waveDelays.highlightStyle == HighlightStyle.ZOMBIES_UTILS) {
+                faded = if (roundTicks > waveTicks) if (!ZAConfig.waveDelays.hidePassedWave) true else continue else false
                 fr.drawStringWithShadow(if (faded) "§8$waveText" else color + waveText, HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
 
                 drawPrefixes(waveText, wave, i, size, faded)
@@ -98,10 +98,10 @@ object WaveDelays: Module("Wave Delays") {
     }
 
     private fun drawPrefixes(waveText: String, wave: Wave, i: Int, length: Int, faded: Boolean = false) {
-        if (!ZAConfig.waveDelaysPrefix) return
+        if (!ZAConfig.waveDelays.prefix) return
         var width = HudUtils.getWaveDelaysStrX("➤ $waveText")
         for (prefix in wave.prefixes) {
-            if (ZAConfig.waveDelaysBossColor && (prefix == Prefix.BOSS || prefix == Prefix.GIANT || prefix == Prefix.OLD_ONE)) continue
+            if (ZAConfig.waveDelays.bossColor && (prefix == Prefix.BOSS || prefix == Prefix.GIANT || prefix == Prefix.OLD_ONE)) continue
             val prefixStr = "${prefix.prefix} "
             width -= fr.getStringWidth(prefixStr)
             fr.drawStringWithShadow(prefixStr, width, HudUtils.getWaveDelaysStrY(length, i), if (faded) prefix.fadedColor else prefix.color)
@@ -109,7 +109,7 @@ object WaveDelays: Module("Wave Delays") {
     }
 
     override fun onLastTick(event: LastClientTickEvent) {
-        if (ZAConfig.internalTimerMode == Mode.CLIENT) {
+        if (ZAConfig.internalTimer.mode == Mode.CLIENT) {
             playSound()
             return
         }
@@ -133,7 +133,7 @@ object WaveDelays: Module("Wave Delays") {
             val waveTime = wave.ticks + offset
             var play = false
 
-            if (ZAConfig.waveDelaysCustomPlaySound) {
+            if (ZAConfig.waveDelays.customPlaySound) {
                 val cpsArr = CustomPlaySoundLoader.cps ?: return
                 val pre = roundTicks - waveTime
 
@@ -147,7 +147,7 @@ object WaveDelays: Module("Wave Delays") {
                     }
                 }
             } else {
-                val timings = ZAConfig.waveDelaysPlaySounds
+                val timings = ZAConfig.waveDelays.playSounds
                 val pre = roundTicks - waveTime
 
                 if (pre in timings) {
@@ -182,7 +182,7 @@ object WaveDelays: Module("Wave Delays") {
         return String.format("%02d", hundredthSeconds)
     }
 
-    override fun isEnable() = ZAConfig.waveDelaysToggle
+    override fun isEnable() = ZAConfig.waveDelays.enable
 }
 
 private fun getBossColor1(gameMode: GameMode, round: Int, wave: Int): String {

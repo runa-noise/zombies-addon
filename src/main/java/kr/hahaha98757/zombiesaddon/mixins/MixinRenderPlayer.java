@@ -31,7 +31,7 @@ public abstract class MixinRenderPlayer {
         }
 
         try {
-            if (!ZAConfig.INSTANCE.getPvFastSemiPv()) {
+            if (!ZAConfig.INSTANCE.getPv().getFastSemiPv()) {
                 pv.setPass(1);
                 GlStateManager.colorMask(false, false, false, false);
                 doRender(entity, x, y, z, entityYaw, partialTicks);

@@ -370,7 +370,7 @@ object PowerupPatterns: Module("Powerup Patterns") {
         fieldsStorage.remove(event.game.serverNumber)
     }
 
-    override fun isEnable() = ZAConfig.togglePowerupPatterns
+    override fun isEnable() = ZAConfig.modules.enablePowerupPatterns
 
     class FieldsStorage {
         val spawnedEntities = mutableSetOf<EntityArmorStand>()

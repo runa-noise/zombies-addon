@@ -68,7 +68,7 @@ fun getY(): Float = ScaledResolution(mc).scaledHeight.toFloat()
 fun getYFont(): Float = getY() - fr.FONT_HEIGHT - 1
 
 // 상태 관련 함수
-fun isDisable() = !ZAConfig.enableMod
+fun isDisable() = !ZAConfig.general.enableMod
 
 fun isHypixel(): Boolean {
     val ip = mc.currentServerData?.serverIP ?: return false
@@ -173,7 +173,7 @@ fun String.withNameColor(): String {
 private val cachedLang = mutableMapOf<String, Properties>()
 
 private fun String.translate(vararg any: Any): String {
-    val lang = ZAConfig.language
+    val lang = ZAConfig.general.language
     val langCode = when (lang) {
         Language.AUTO -> return I18n.format(this, *any)
         Language.KO_KR -> "ko_KR"

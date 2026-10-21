@@ -75,21 +75,21 @@ private class MessageSender(categoryName: String, private val round: Int, privat
     private var copyString = ""
 
     fun gameSplit() {
-        val notice = if (ZAConfig.recorderPbNotice && newTime < oldTime)
+        val notice = if (ZAConfig.recorder.pbNotice && newTime < oldTime)
             "\n${getTranslatedString("zombiesaddon.modules.recorder.newPb")}" else ""
         recordMessage += "$notice\n${getTranslatedString("zombiesaddon.modules.recorder.pb", true, "§c$round", "§a$timeString§9$deltaString")}"
         copyString = getTranslatedString("zombiesaddon.modules.recorder.pb", false, round, timeString + if (deltaString.isEmpty()) "" else " ($deltaString)")
     }
 
     fun roundSplit() {
-        val notice = if (ZAConfig.recorderPbNotice && newTime < oldTime)
+        val notice = if (ZAConfig.recorder.pbNotice && newTime < oldTime)
             "\n${getTranslatedString("zombiesaddon.modules.recorder.newBestSegment")}" else ""
         recordMessage += "$notice\n${getTranslatedString("zombiesaddon.modules.recorder.bestSegment", true, "§c$round", "§a$timeString§9$deltaString")}"
         copyString = getTranslatedString("zombiesaddon.modules.recorder.bestSegment", false, round, timeString + if (deltaString.isEmpty()) "" else " ($deltaString)")
     }
 
     fun helicopterSplit() {
-        val notice = if (ZAConfig.recorderPbNotice && newTime < oldTime)
+        val notice = if (ZAConfig.recorder.pbNotice && newTime < oldTime)
             "\n${getTranslatedString("zombiesaddon.modules.recorder.newPb")}" else ""
         recordMessage += "$notice\n${getTranslatedString("zombiesaddon.modules.recorder.helicopter", true, "§a$timeString§9$deltaString")}"
         copyString = getTranslatedString("zombiesaddon.modules.recorder.helicopter", false, timeString + if (deltaString.isEmpty()) "" else " ($deltaString)")

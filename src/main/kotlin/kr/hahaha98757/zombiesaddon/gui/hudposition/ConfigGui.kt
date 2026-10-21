@@ -28,7 +28,7 @@ object ConfigGui: GuiScreen() {
 
     override fun initGui() {
         val widthAutoSplits = fr.getStringWidth("0:00.0")
-        val widthWaveDelays = fr.getStringWidth("➤ ${ZAConfig.waveDelaysTextStyle}")
+        val widthWaveDelays = fr.getStringWidth("➤ ${ZAConfig.waveDelays.textStyle}")
         val widthPowerupPatterns = fr.getStringWidth("Shopping Spree: Round 105")
         val widthModName = fr.getStringWidth("$NAME v$VERSION")
         val widthToggleText = fr.getStringWidth("Player Visibility: off")

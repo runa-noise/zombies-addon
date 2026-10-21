@@ -9,18 +9,18 @@ import java.net.Socket
 
 object AutoSplits {
     fun startOrSplit() {
-        if (!ZAConfig.autoSplitsToggle) return
+        if (!ZAConfig.autoSplits.enable) return
         sendCommand("startorsplit")
     }
 
     fun pause() {
-        if (!ZAConfig.autoSplitsToggle) return
+        if (!ZAConfig.autoSplits.enable) return
         sendCommand("pause")
     }
 
     fun sendCommand(command: String) = Thread {
         try {
-            Socket(ZAConfig.autoSplitsHost, ZAConfig.autoSplitsPort).use {
+            Socket(ZAConfig.autoSplits.host, ZAConfig.autoSplits.port).use {
                 val output = it.getOutputStream().bufferedWriter()
 
                 output.write("$command\r\n")

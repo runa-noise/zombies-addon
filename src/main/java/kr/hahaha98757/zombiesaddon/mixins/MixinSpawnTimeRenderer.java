@@ -13,6 +13,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinSpawnTimeRenderer {
     @Inject(method = "onRender", at = @At("HEAD"), cancellable = true)
     private void disableSpawnTime(CallbackInfo ci) {
-        if (ZAConfig.INSTANCE.getEnableMod() && ZAConfig.INSTANCE.getDisableSpawnTimeOfSst()) ci.cancel();
+        if (ZAConfig.INSTANCE.getGeneral().getEnableMod() && ZAConfig.INSTANCE.getOtherMods().getDisableSpawnTimeOfSst()) ci.cancel();
     }
 }

@@ -19,7 +19,7 @@ object InternalTimer: Module("Internal Timer") {
         val secondsPart = (ticks % 1200) / 20
         val tenthSecondsPart = ((ticks % 1200) % 20) / 2
         val hundredthSecondsPart = ((ticks % 1200) % 20) * 5
-        val timer = when (ZAConfig.internalTimerTextStyle) {
+        val timer = when (ZAConfig.internalTimer.textStyle) {
             ITTextStyle.ZOMBIES_ADDON -> String.format("%d:%02d.%d", minutesPart, secondsPart, tenthSecondsPart)
             ITTextStyle.DETAILS -> String.format("%d:%02d.%02d", minutesPart, secondsPart, hundredthSecondsPart)
             ITTextStyle.SST -> String.format("%02d:%02d", minutesPart, secondsPart)
@@ -27,5 +27,5 @@ object InternalTimer: Module("Internal Timer") {
         fr.drawStringWithShadow(timer, HudUtils.getAutoSplitsStrX(timer), HudUtils.getAutoSplitsStrY(), 0xffffff)
     }
 
-    override fun isEnable() = ZAConfig.internalTimerToggle
+    override fun isEnable() = ZAConfig.internalTimer.enable
 }

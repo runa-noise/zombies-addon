@@ -8,7 +8,7 @@ import kr.hahaha98757.zombiesaddon.utils.Scoreboard
 import kr.hahaha98757.zombiesaddon.utils.addTranslatedChat
 import kr.hahaha98757.zombiesaddon.utils.sendChat
 
-object AutoRejoin: ToggleableModule("Auto Rejoin", ZAConfig.autoRejoinDefault) {
+object AutoRejoin: ToggleableModule("Auto Rejoin", ZAConfig.autoRejoin.default) {
     override fun getKeyBinding() = KeyBindings.toggleAutoRejoin
     override fun addToggleText(enabled: Boolean) =
         addTranslatedChat("zombiesaddon.modules.general.toggled", "Auto Rejoin", if (enabled) "§aon" else "§coff")

@@ -16,7 +16,7 @@ object Patcher: AlwaysEnableModule("Patcher") {
     }
 
     private fun ingame(message: String, event: ClientChatReceivedEvent) {
-        if (!ZAConfig.patcherKoreanPatch) return
+        if (!ZAConfig.patcher.koreanPatch) return
         if (isNotPlayZombies()) return
 
         when (message) {
@@ -30,7 +30,7 @@ object Patcher: AlwaysEnableModule("Patcher") {
     }
 
     private fun zombiesOverlay(message: String) {
-        if (!ZAConfig.patcherZombiesOverlayInKo) return
+        if (!ZAConfig.patcher.zombiesOverlayInKo) return
 
         if (message.startsWith("온라인: ")) addChat("ONLINE: ${message.split(":")[1].trim()}")
         if ("님이 참여했습니다!" in message) {
@@ -51,7 +51,7 @@ object Patcher: AlwaysEnableModule("Patcher") {
     fun fixRifleSound(packet: S29PacketSoundEffect): S29PacketSoundEffect {
         if (isDisable()) return packet
         if (isNotPlayZombies()) return packet
-        if (!ZAConfig.patcherFixRifleSound) return packet
+        if (!ZAConfig.patcher.fixRifleSound) return packet
         return if (packet.soundName == "fireworks.largeblast")
             S29PacketSoundEffect("fireworks.largeBlast", packet.x, packet.y, packet.z, packet.volume, packet.pitch)
         else packet

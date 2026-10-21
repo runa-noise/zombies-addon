@@ -7,7 +7,7 @@ import kr.hahaha98757.zombiesaddon.utils.*
 import net.minecraftforge.client.event.RenderGameOverlayEvent
 import org.lwjgl.opengl.GL11
 
-object BlockAlarm: ToggleableModule("Block Alarm", ZAConfig.blockAlarmDefault) {
+object BlockAlarm: ToggleableModule("Block Alarm", ZAConfig.blockAlarm.default) {
     override fun getKeyBinding() = KeyBindings.toggleBlockAlarm
     override fun addToggleText(enabled: Boolean) =
         addTranslatedChat("zombiesaddon.modules.general.toggled", "Block Alarm", if (enabled) "§aon" else "§coff")

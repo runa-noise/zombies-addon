@@ -12,6 +12,6 @@ object TextMacro: AlwaysEnableModule("Text Macro") {
         if (!KeyBindings.textMacro.isPressed) return
         if (isDisable()) return
         if (isNotPlayZombies()) return
-        sendChat(ZAConfig.textMacro)
+        sendChat(ZAConfig.modules.textMacro)
     }
 }

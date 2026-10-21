@@ -28,20 +28,20 @@ object System {
 
         val color = when {
             ZombiesAddon.instance.debug -> 0x55ff55
-            ZAConfig.speedrunMode -> 0x55ffff
+            ZAConfig.general.speedrunMode -> 0x55ffff
             else -> 0xffff55
         }
         var str = "$NAME v$VERSION"
         fr.drawStringWithShadow(str, HudUtils.getModNameStrX(str), HudUtils.getModNameStrY(), color)
 
         str = "Player Visibility: ${if (PlayerVisibility.isEnable()) "§aon" else "§coff"}"
-        if (ZAConfig.pvText) fr.drawStringWithShadow(str, HudUtils.getToggleTextStrX(str), HudUtils.getToggleTextStrY(i++), 0xffff55)
+        if (ZAConfig.pv.displayText) fr.drawStringWithShadow(str, HudUtils.getToggleTextStrX(str), HudUtils.getToggleTextStrY(i++), 0xffff55)
 
         str = "Block Alarm: ${if (BlockAlarm.isEnable()) "§aon" else "§coff"}"
-        if (ZAConfig.blockAlarmText) fr.drawStringWithShadow(str, HudUtils.getToggleTextStrX(str), HudUtils.getToggleTextStrY(i++), 0xffff55)
+        if (ZAConfig.blockAlarm.displayText) fr.drawStringWithShadow(str, HudUtils.getToggleTextStrX(str), HudUtils.getToggleTextStrY(i++), 0xffff55)
 
         str = "Auto Rejoin: ${if (AutoRejoin.isEnable()) "§aon" else "§coff"}"
-        if (ZAConfig.autoRejoinText) fr.drawStringWithShadow(str, HudUtils.getToggleTextStrX(str), HudUtils.getToggleTextStrY(i), 0xffff55)
+        if (ZAConfig.autoRejoin.displayText) fr.drawStringWithShadow(str, HudUtils.getToggleTextStrX(str), HudUtils.getToggleTextStrY(i), 0xffff55)
     }
 
     @SubscribeEvent

@@ -22,7 +22,7 @@ object HudUtils {
 
     private var _waveDelaysX = 0.0
     var waveDelaysX = 0.0
-        get() = if (field < 0) 1.0 - (fr.getStringWidth("➤ ${ZAConfig.waveDelaysTextStyle}") + 0.9) / getX() else field
+        get() = if (field < 0) 1.0 - (fr.getStringWidth("➤ ${ZAConfig.waveDelays.textStyle}") + 0.9) / getX() else field
         set(value) {
             field = value
             _waveDelaysX = value

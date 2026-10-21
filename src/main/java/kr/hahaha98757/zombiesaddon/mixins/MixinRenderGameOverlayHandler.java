@@ -13,6 +13,6 @@ import xyz.stachel.zombiesutils.handlers.RenderGameOverlayHandler;
 public class MixinRenderGameOverlayHandler {
     @Inject(method = "renderTime", at = @At("HEAD"), cancellable = true)
     private void disableTimer(CallbackInfo ci) {
-        if (ZAConfig.INSTANCE.getEnableMod() && ZAConfig.INSTANCE.getDisableTimerOfZombiesUtils()) ci.cancel();
+        if (ZAConfig.INSTANCE.getGeneral().getEnableMod() && ZAConfig.INSTANCE.getOtherMods().getDisableTimerOfZombiesUtils()) ci.cancel();
     }
 }

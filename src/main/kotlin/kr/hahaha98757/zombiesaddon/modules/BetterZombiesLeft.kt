@@ -70,5 +70,5 @@ object BetterZombiesLeft: Module("Better Zombies Left") {
         return "$base§a$leftOnCurrentWave§f + §c$leftAfterWave"
     }
 
-    override fun isEnable() = ZAConfig.toggleBetterZombiesLeft
+    override fun isEnable() = ZAConfig.modules.enableBetterZombiesLeft
 }

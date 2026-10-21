@@ -20,7 +20,7 @@ object LastWeapons: Module("Last Weapons") {
         if (!isEnable()) return false
         val game = GameManager.game ?: return false
         if (!game.gameEnd) return false
-        if (!game.isWin && !ZAConfig.lwWorkInGameOver) return false
+        if (!game.isWin && !ZAConfig.lw.workInGameOver) return false
         return true
     }
 
@@ -39,7 +39,7 @@ object LastWeapons: Module("Last Weapons") {
                 val weapon = weapons[i]
 
                 weapon?.let {
-                    if (i == 4 && ZAConfig.lwDisplayCooledDownSkill && it.item == Items.dye && it.itemDamage == 8) {
+                    if (i == 4 && ZAConfig.lw.displayCooledDownSkill && it.item == Items.dye && it.itemDamage == 8) {
                         val name = it.displayName.withoutColor()
                         val replaced = when (name) {
                             in heal -> displayTexture("textures/items/heal_cool.png", x + 20 * i, y)
@@ -56,8 +56,7 @@ object LastWeapons: Module("Last Weapons") {
                     val level = getLevel(it.displayName.withoutColor())
 
                     renderItem.renderItemAndEffectIntoGUI(it, x + 20 * i, y)
-
-                    if (ZAConfig.lwDisplayWeaponsLevel && level != 0)
+                    if (ZAConfig.lw.displayLevel && level != 0)
                         displayTexture("textures/items/level$level.png", x + 20 * i, y)
                     renderItem.renderItemOverlayIntoGUI(fr, it, x + 20 * i, y, null)
                 }
@@ -65,7 +64,7 @@ object LastWeapons: Module("Last Weapons") {
 
             GlStateManager.popAttrib()
 
-            if (ZAConfig.lwDisplayArmors) {
+            if (ZAConfig.lw.displayArmors) {
                 x = (getX() / 2 + 12).toInt()
                 y = (getY() - 60).toInt()
 
@@ -99,5 +98,5 @@ object LastWeapons: Module("Last Weapons") {
         return true
     }
 
-    override fun isEnable() = ZAConfig.lwToggle
+    override fun isEnable() = ZAConfig.lw.enable
 }
