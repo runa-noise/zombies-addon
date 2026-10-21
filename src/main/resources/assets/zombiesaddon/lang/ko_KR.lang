@@ -164,8 +164,6 @@ zombiesaddon.config.general.language.comment=모드에 사용할 언어입니다
 zombiesaddon.config.general.speedrunMode=스피드런 모드
 zombiesaddon.config.general.speedrunMode.comment=스피드런 모드를 활성화 또는 비활성화합니다. speedrun.com 규칙에서 금지된 일부 기능을 비활성화합니다.
 
-zombiesaddon.config.modules.enableNotLast=Not Last 활성화
-zombiesaddon.config.modules.enableNotLast.comment=Not Last를 활성화 또는 비활성화합니다.
 zombiesaddon.config.modules.enablePowerupPatterns=Powerup Patterns 활성화
 zombiesaddon.config.modules.enablePowerupPatterns.comment=Powerup Patterns를 활성화 또는 비활성화합니다.
 zombiesaddon.config.modules.enableBetterZombiesLeft=Better Zombies Left 활성화
@@ -196,6 +194,11 @@ zombiesaddon.config.blockAlarm.default=전환 기본값
 zombiesaddon.config.blockAlarm.default.comment=Block Alarm의 전환 기본값입니다.
 zombiesaddon.config.blockAlarm.displayText=텍스트 표시
 zombiesaddon.config.blockAlarm.displayText.comment=Block Alarm 상태를 표시하는 텍스트입니다.
+
+zombiesaddon.config.notLast.enable=Not Last 활성화
+zombiesaddon.config.notLast.enable.comment=Not Last를 활성화 또는 비활성화합니다.
+zombiesaddon.config.notLast.activationTimes=활성화 시간
+zombiesaddon.config.notLast.activationTimes.comment=이 시간(틱 단위) 동안 플레이어를 찾지 못하면, 실패로 처리됩니다.
 
 zombiesaddon.config.autoSplits.enable=Auto Splits 활성화
 zombiesaddon.config.autoSplits.enable.comment=Auto Splits를 활성화 또는 비활성화합니다.

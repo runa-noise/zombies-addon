@@ -165,8 +165,6 @@ zombiesaddon.config.general.language.comment=このmodの言語
 zombiesaddon.config.general.speedrunMode=スピードランモード
 zombiesaddon.config.general.speedrunMode.comment=スピードランモードを有効または無効にします。speedrun.comルールで禁止されている機能の一部を無効にします。
 
-zombiesaddon.config.modules.enableNotLast=Not Lastを有効化
-zombiesaddon.config.modules.enableNotLast.comment=Not Lastを有効または無効にします。
 zombiesaddon.config.modules.enablePowerupPatterns=Powerup Patternsを有効化
 zombiesaddon.config.modules.enablePowerupPatterns.comment=Powerup Patternsを有効または無効にします。
 zombiesaddon.config.modules.enableBetterZombiesLeft=Better Zombies Leftを有効化
@@ -197,6 +195,11 @@ zombiesaddon.config.blockAlarm.default=デフォルトの切り替え状態
 zombiesaddon.config.blockAlarm.default.comment=ゲーム開始時の切り替え状態です。
 zombiesaddon.config.blockAlarm.displayText=テキストを表示
 zombiesaddon.config.blockAlarm.displayText.comment=Block Alarmの状態を表示するテキストです。
+
+zombiesaddon.config.notLast.enable=Not Lastを有効化
+zombiesaddon.config.notLast.enable.comment=Not Lastを有効または無効にします。
+zombiesaddon.config.notLast.activationTimes=有効化時間
+zombiesaddon.config.notLast.activationTimes.comment=この時間(ティック単位)の間にプレイヤーを見つけられなかった場合、失敗として処理されます。
 
 zombiesaddon.config.autoSplits.enable=Auto Splitsを有効化
 zombiesaddon.config.autoSplits.enable.comment=Auto Splitsを有効または無効にします。

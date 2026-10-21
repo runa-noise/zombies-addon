@@ -165,8 +165,6 @@ zombiesaddon.config.general.language.comment=The language for the mod.
 zombiesaddon.config.general.speedrunMode=Speedrun Mode
 zombiesaddon.config.general.speedrunMode.comment=Enable or disable Speedrun Mode. It disables some features prohibited by speedrun.com rules.
 
-zombiesaddon.config.modules.enableNotLast=Enable Not Last
-zombiesaddon.config.modules.enableNotLast.comment=Enable or disable Not Last.
 zombiesaddon.config.modules.enablePowerupPatterns=Enable Powerup Patterns
 zombiesaddon.config.modules.enablePowerupPatterns.comment=Enable or disable Powerup Patterns.
 zombiesaddon.config.modules.enableBetterZombiesLeft=Enable Better Zombies Left
@@ -197,6 +195,11 @@ zombiesaddon.config.blockAlarm.default=Default Toggle State
 zombiesaddon.config.blockAlarm.default.comment=Toggle state when the game starts.
 zombiesaddon.config.blockAlarm.displayText=Display Text
 zombiesaddon.config.blockAlarm.displayText.comment=Display a text with state of Block Alarm.
+
+zombiesaddon.config.notLast.enable=Enable Not Last
+zombiesaddon.config.notLast.enable.comment=Enable or disable Not Last.
+zombiesaddon.config.notLast.activationTimes=Activation Times
+zombiesaddon.config.notLast.activationTimes.comment=If a player is not found within this time in ticks, it results in failure.
 
 zombiesaddon.config.autoSplits.enable=Enable Auto Splits
 zombiesaddon.config.autoSplits.enable.comment=Enable or disable Auto Splits.

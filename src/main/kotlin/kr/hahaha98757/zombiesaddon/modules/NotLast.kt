@@ -33,7 +33,7 @@ object NotLast: Module("Not Last") {
                 scoreMap[score.playerName] = score.scorePoints
         }
 
-        RepeatedTask(endTask = { addTranslatedChat("zombiesaddon.modules.notLast.failed") }) {
+        RepeatedTask(ZAConfig.notLast.activationTimes, endTask = { addTranslatedChat("zombiesaddon.modules.notLast.failed") }) {
             val players: MutableList<String>
             if (!debug) {
                 players = mutableListOf()
@@ -69,7 +69,7 @@ object NotLast: Module("Not Last") {
         addTranslatedChat("zombiesaddon.modules.notLast.printLast", toString())
     }
 
-    override fun isEnable() = ZAConfig.modules.enableNotLast
+    override fun isEnable() = ZAConfig.notLast.enable
 
     private fun getComma() = getTranslatedString("zombiesaddon.modules.notLast.comma").let {
         if (it.endsWith("{space}")) "${it.removeSuffix("{space}")} "

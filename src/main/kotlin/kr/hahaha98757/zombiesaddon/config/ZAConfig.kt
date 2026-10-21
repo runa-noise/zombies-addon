@@ -14,6 +14,7 @@ object ZAConfig {
     val modules = Modules()
     val pv = PlayerVisibility()
     val blockAlarm = BlockAlarm()
+    val notLast = NotLast()
     val autoSplits = AutoSplits()
     val internalTimer = InternalTimer()
     val waveDelays = WaveDelays()
@@ -36,6 +37,7 @@ object ZAConfig {
         modules.sync(config)
         pv.sync(config)
         blockAlarm.sync(config)
+        notLast.sync(config)
         autoSplits.sync(config)
         internalTimer.sync(config)
         waveDelays.sync(config)
@@ -73,6 +75,7 @@ object ZAConfig {
         modules.getCategoryElement(),
         pv.getCategoryElement(),
         blockAlarm.getCategoryElement(),
+        notLast.getCategoryElement(),
         autoSplits.getCategoryElement(),
         internalTimer.getCategoryElement(),
         waveDelays.getCategoryElement(),
