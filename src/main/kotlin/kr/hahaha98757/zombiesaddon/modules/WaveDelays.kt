@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent
 
 object WaveDelays: Module("Wave Delays") {
     private const val DESPAWN_TICK: Short = 6000
-    private var offsetMode = OffsetMode.OFF
+    private var offsetMode = WDOffsetMode.OFF
     private var offset = 0
 
     override fun onKeyInput(event: KeyInputEvent) {
@@ -23,17 +23,17 @@ object WaveDelays: Module("Wave Delays") {
             if (isDisable()) return
             if (!isEnable()) return
 
-            offset = if (offsetMode != OffsetMode.RL_MODE) ZAConfig.waveDelays.rlModeOffset else 0
-            addChat("§eWave Delays: " + getTranslatedString("zombiesaddon.modules.general.toggled", true, "Offset Mode", if (offsetMode != OffsetMode.RL_MODE) "§aRL Mode" else "§coff"))
-            offsetMode = if (offsetMode != OffsetMode.RL_MODE) OffsetMode.RL_MODE else OffsetMode.OFF
+            offset = if (offsetMode != WDOffsetMode.RL_MODE) ZAConfig.waveDelays.rlModeOffset else 0
+            addChat("§eWave Delays: " + getTranslatedString("zombiesaddon.modules.general.toggled", true, "Offset Mode", if (offsetMode != WDOffsetMode.RL_MODE) "§aRL Mode" else "§coff"))
+            offsetMode = if (offsetMode != WDOffsetMode.RL_MODE) WDOffsetMode.RL_MODE else WDOffsetMode.OFF
         }
         if (KeyBindings.toggleWrathMode.isPressed) {
             if (isDisable()) return
             if (!isEnable()) return
 
-            offset = if (offsetMode != OffsetMode.WRATH_MODE) ZAConfig.waveDelays.wrathModeOffset else 0
-            addChat("§eWave Delays: " + getTranslatedString("zombiesaddon.modules.general.toggled", true, "Offset Mode", if (offsetMode != OffsetMode.WRATH_MODE) "§aWrath Mode" else "§coff"))
-            offsetMode = if (offsetMode != OffsetMode.WRATH_MODE) OffsetMode.WRATH_MODE else OffsetMode.OFF
+            offset = if (offsetMode != WDOffsetMode.WRATH_MODE) ZAConfig.waveDelays.wrathModeOffset else 0
+            addChat("§eWave Delays: " + getTranslatedString("zombiesaddon.modules.general.toggled", true, "Offset Mode", if (offsetMode != WDOffsetMode.WRATH_MODE) "§aWrath Mode" else "§coff"))
+            offsetMode = if (offsetMode != WDOffsetMode.WRATH_MODE) WDOffsetMode.WRATH_MODE else WDOffsetMode.OFF
         }
     }
 
@@ -49,7 +49,7 @@ object WaveDelays: Module("Wave Delays") {
         var faded: Boolean
         var color = "§e"
 
-        if (ZAConfig.waveDelays.highlightStyle == HighlightStyle.ZOMBIES_ADDON) for (i in waves.indices.reversed()) {
+        if (ZAConfig.waveDelays.highlightStyle == WDHighlightStyle.ZOMBIES_ADDON) for (i in waves.indices.reversed()) {
             val waveTicks = waves[i].ticks + offset
             if (roundTicks >= waveTicks) {
                 if (ZAConfig.waveDelays.hidePassedWave && roundTicks > waveTicks) break
@@ -76,7 +76,7 @@ object WaveDelays: Module("Wave Delays") {
                 WDTextStyle.SST -> "W${i+1} ${bossColor[0] + getMinutesString(waveTicks, true)}:${bossColor[1] + getSecondsString(waveTicks)}"
             }
 
-            if (ZAConfig.waveDelays.highlightStyle == HighlightStyle.ZOMBIES_ADDON) {
+            if (ZAConfig.waveDelays.highlightStyle == WDHighlightStyle.ZOMBIES_ADDON) {
                 if (roundTicks >= waveTicks + DESPAWN_TICK)
                     fr.drawStringWithShadow("§c$waveText", HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
                 else if (roundTicks >= waveTicks) if (roundTicks != waveTicks && ZAConfig.waveDelays.hidePassedWave) continue
@@ -87,7 +87,7 @@ object WaveDelays: Module("Wave Delays") {
                     fr.drawStringWithShadow("§8$waveText", HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
 
                 drawPrefixes(waveText, wave, i, size)
-            } else if (ZAConfig.waveDelays.highlightStyle == HighlightStyle.ZOMBIES_UTILS) {
+            } else if (ZAConfig.waveDelays.highlightStyle == WDHighlightStyle.ZOMBIES_UTILS) {
                 faded = if (roundTicks > waveTicks) if (!ZAConfig.waveDelays.hidePassedWave) true else continue else false
                 fr.drawStringWithShadow(if (faded) "§8$waveText" else color + waveText, HudUtils.getWaveDelaysStrX(waveText), HudUtils.getWaveDelaysStrY(size, i), 0)
 
@@ -109,7 +109,7 @@ object WaveDelays: Module("Wave Delays") {
     }
 
     override fun onLastTick(event: LastClientTickEvent) {
-        if (ZAConfig.internalTimer.mode == Mode.CLIENT) {
+        if (ZAConfig.internalTimer.mode == ITMode.CLIENT) {
             playSound()
             return
         }

@@ -1,6 +1,6 @@
 package kr.hahaha98757.zombiesaddon.config.categories
 
-import kr.hahaha98757.zombiesaddon.enums.Mode
+import kr.hahaha98757.zombiesaddon.enums.ITMode
 import kr.hahaha98757.zombiesaddon.enums.ITTextStyle
 import net.minecraftforge.common.config.Configuration
 
@@ -10,11 +10,11 @@ class InternalTimer: AbstractCategory() {
 
     var enable = true
     var textStyle = ITTextStyle.ZOMBIES_ADDON
-    var mode = Mode.SERVER
+    var mode = ITMode.SERVER
 
     override fun sync(config: Configuration) {
         enable = addOption(config.get(categoryName, "enable", true)).boolean
         textStyle = ITTextStyle.fromText(addOption(config.get(categoryName, "textStyle", ITTextStyle.ZOMBIES_ADDON.toString(), "", ITTextStyle.arrays)).string)
-        mode = Mode.fromText(addOption(config.get(categoryName, "mode", Mode.SERVER.toString(), "", Mode.arrays)).string)
+        mode = ITMode.fromText(addOption(config.get(categoryName, "mode", ITMode.SERVER.toString(), "", ITMode.arrays)).string)
     }
 }

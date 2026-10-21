@@ -1,7 +1,7 @@
 package kr.hahaha98757.zombiesaddon.game
 
 import kr.hahaha98757.zombiesaddon.config.ZAConfig
-import kr.hahaha98757.zombiesaddon.enums.Mode
+import kr.hahaha98757.zombiesaddon.enums.ITMode
 import kr.hahaha98757.zombiesaddon.events.ServerTickEvent
 import kr.hahaha98757.zombiesaddon.modules.WaveDelays
 import kr.hahaha98757.zombiesaddon.utils.mc
@@ -18,7 +18,7 @@ class Timer(private val world: World) {
         private set
     private var stop = false
 
-    private val isClientMode get() = ZAConfig.internalTimer.mode == Mode.CLIENT
+    private val isClientMode get() = ZAConfig.internalTimer.mode == ITMode.CLIENT
 
     val gameTick get() = if (!isClientMode && source == TimerSource.SERVER) serverTimer.gameTick
     else clientTimer.gameTick
