@@ -204,6 +204,10 @@ zombiesaddon.config.autoSplits.host=Host
 zombiesaddon.config.autoSplits.host.comment=The host of LiveSplit server.
 zombiesaddon.config.autoSplits.port=Port
 zombiesaddon.config.autoSplits.port.comment=The port of LiveSplit server.
+zombiesaddon.config.autoSplits.passCommand=Pass Command
+zombiesaddon.config.autoSplits.passCommand.comment=The command to send when you pass a round.
+zombiesaddon.config.autoSplits.loseCommand=Lose Command
+zombiesaddon.config.autoSplits.loseCommand.comment=The command to send when you lose the game.
 
 zombiesaddon.config.internalTimer.enable=Enable Internal Timer
 zombiesaddon.config.internalTimer.enable.comment=Enable or disable Internal Timer.

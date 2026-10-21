@@ -204,6 +204,10 @@ zombiesaddon.config.autoSplits.host=ホスト
 zombiesaddon.config.autoSplits.host.comment=LiveSplitサーバーのホスト。
 zombiesaddon.config.autoSplits.port=ポート
 zombiesaddon.config.autoSplits.port.comment=LiveSplitサーバーのポート。
+zombiesaddon.config.autoSplits.passCommand=通過コマンド
+zombiesaddon.config.autoSplits.passCommand.comment=ラウンド通過時に渡すコマンドです。
+zombiesaddon.config.autoSplits.loseCommand=敗北コマンド
+zombiesaddon.config.autoSplits.loseCommand.comment=ゲーム敗北時に渡すコマンドです。
 
 zombiesaddon.config.internalTimer.enable=Internal Timerを有効化
 zombiesaddon.config.internalTimer.enable.comment=Internal Timerを有効または無効にします。

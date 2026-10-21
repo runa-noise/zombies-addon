@@ -37,7 +37,7 @@ class Game(var gameMode: GameMode, val serverNumber: ServerNumber, var round: In
         }
         if (gameEnd) return
         timer.split()
-        AutoSplits.startOrSplit()
+        AutoSplits.pass()
         if (!isPractice()) {
             this.round = round + 1
             MinecraftForge.EVENT_BUS.post(RoundStartEvent(this))

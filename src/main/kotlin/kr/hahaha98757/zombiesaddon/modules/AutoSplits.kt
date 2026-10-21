@@ -8,14 +8,14 @@ import java.net.Socket
 
 
 object AutoSplits {
-    fun startOrSplit() {
+    fun pass() {
         if (!ZAConfig.autoSplits.enable) return
-        sendCommand("startorsplit")
+        sendCommand(ZAConfig.autoSplits.passCommand)
     }
 
-    fun pause() {
+    fun lose() {
         if (!ZAConfig.autoSplits.enable) return
-        sendCommand("pause")
+        sendCommand(ZAConfig.autoSplits.loseCommand)
     }
 
     fun sendCommand(command: String) = Thread {

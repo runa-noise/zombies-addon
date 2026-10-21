@@ -36,7 +36,7 @@ object GameManager {
             MinecraftForge.EVENT_BUS.post(GameRemoveEvent(it))
         }
         games[serverNumber] = game
-        AutoSplits.startOrSplit()
+        AutoSplits.pass()
         RepeatedTask(100) {
             val difficulty = getDifficulty() ?: return@RepeatedTask
             game.changeDifficulty(difficulty)
@@ -59,8 +59,8 @@ object GameManager {
                 ZombiesMap.ALIEN_ARCADIUM -> game.pass(105)
             }
         }
-        if (isWin) AutoSplits.startOrSplit()
-        else AutoSplits.pause()
+        if (isWin) AutoSplits.pass()
+        else AutoSplits.lose()
         if (mc.isCallingFromMinecraftThread) MinecraftForge.EVENT_BUS.post(GameEndEvent(game, isWin))
         else mc.addScheduledTask { MinecraftForge.EVENT_BUS.post(GameEndEvent(game, isWin)) }
     }

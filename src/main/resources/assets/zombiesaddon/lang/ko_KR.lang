@@ -203,6 +203,10 @@ zombiesaddon.config.autoSplits.host=호스트
 zombiesaddon.config.autoSplits.host.comment=LiveSplit 서버의 호스트입니다.
 zombiesaddon.config.autoSplits.port=포트
 zombiesaddon.config.autoSplits.port.comment=LiveSplit 서버의 포트입니다.
+zombiesaddon.config.autoSplits.passCommand=통과 명령어
+zombiesaddon.config.autoSplits.passCommand.comment=라운드 통과 시 전달할 명령어입니다.
+zombiesaddon.config.autoSplits.loseCommand=패배 명령어
+zombiesaddon.config.autoSplits.loseCommand.comment=게임 패배 시 전달할 명령어입니다.
 
 zombiesaddon.config.internalTimer.enable=Internal Timer 활성화
 zombiesaddon.config.internalTimer.enable.comment=Internal Timer를 활성화 또는 비활성화합니다.
