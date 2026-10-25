@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import org.apache.logging.log4j.Logger
 import java.io.File
 import java.io.FileWriter
+import java.time.LocalDateTime
 
 const val MODID = "zombiesaddon"
 const val NAME = "Zombies Addon"
@@ -71,6 +72,8 @@ class ZombiesAddon {
     @Mod.EventHandler
     fun postInit(@Suppress("unused") event: FMLPostInitializationEvent) {
         logger.info("postInit 시작.")
+        removeSegFile()
+
         if (Loader.isModLoaded("showspawntime")) {
             hasSST = true
             runCatching { ShowSpawnTime.getMainConfiguration().ConfigLoad() }
@@ -132,6 +135,26 @@ class ZombiesAddon {
         val jsonString = gson.toJson(cps)
 
         FileWriter(json).use { it.write(jsonString) }
+    }
+
+    private fun removeSegFile() {
+        val cutoff = LocalDateTime.now().minusDays(7)
+        val pattern = Regex("""(\d{4})-(\d{2})-(\d{2})_(\d{2})-(\d{2})-(\d{2})_.+\.seg""")
+        val folder = File(mc.mcDataDir, "zombies/runs")
+        var count = 0
+
+        folder.listFiles { it.isFile && it.name.endsWith(".seg") }?.forEach { file ->
+            val matchResult = pattern.matchEntire(file.name) ?: return@forEach
+            val (year, month, day, hour, minute, second) = matchResult.destructured
+            val fileDateTime = runCatching {
+                LocalDateTime.of(year.toInt(), month.toInt(), day.toInt(), hour.toInt(), minute.toInt(), second.toInt())
+            }.getOrNull() ?: return@forEach
+            if (fileDateTime.isBefore(cutoff)) {
+                count++
+                file.delete()
+            }
+        }
+        logger.info("7일 이상 지난 .seg 파일 ${count}개를 삭제했습니다.")
     }
 
     private fun registerAll() {

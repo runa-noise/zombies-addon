@@ -53,12 +53,12 @@ object GameManager {
         game.gameEnd = true
         game.timer.stop()
         game.isWin = isWin
-        if (isWin) {
-            when (game.gameMode.map) {
+        if (isWin)
+            if (game.helicopter) game.escape()
+            else when (game.gameMode.map) {
                 ZombiesMap.DEAD_END, ZombiesMap.BAD_BLOOD, ZombiesMap.PRISON -> game.pass(30)
                 ZombiesMap.ALIEN_ARCADIUM -> game.pass(105)
             }
-        }
         if (isWin) AutoSplits.pass()
         else AutoSplits.lose()
         if (mc.isCallingFromMinecraftThread) MinecraftForge.EVENT_BUS.post(GameEndEvent(game, isWin))

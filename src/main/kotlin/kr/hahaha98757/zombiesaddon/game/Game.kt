@@ -15,10 +15,10 @@ class Game(var gameMode: GameMode, val serverNumber: ServerNumber, var round: In
     var gameEnd = false
     var isWin = false
         get() = if (gameEnd) field else throw IllegalStateException("게임이 아직 종료되지 않았습니다.")
-    var escape = false
-    val recorder = Recorder(this)
+    var helicopter = false
+    val recorder = Recorder(this, doNotCorrectTimer)
     val timerCorrector = TimerCorrector(this)
-
+    var lastRound = 0
     init {
         if (!doNotCorrectTimer) MinecraftForge.EVENT_BUS.register(timerCorrector)
     }
@@ -30,7 +30,7 @@ class Game(var gameMode: GameMode, val serverNumber: ServerNumber, var round: In
     }
 
     fun pass(round: Int) {
-        if (round != 0) recorder.runCatching { record(!isPractice()) }.onFailure {
+        if (round != 0) recorder.runCatching { record(isPractice()) }.onFailure {
             if (isPractice()) return
             logger.error("게임 기록을 실패했습니다.", it)
             addTranslatedChat("zombiesaddon.modules.recorder.failed", it.message ?: "알 수 없음(Unknown)")
@@ -53,8 +53,14 @@ class Game(var gameMode: GameMode, val serverNumber: ServerNumber, var round: In
 
     fun helicopter() {
         if (gameMode.map != ZombiesMap.PRISON) return
-        escape = true
+        helicopter = true
+        lastRound = round
         pass(30)
+    }
+
+    fun escape() {
+        if (gameMode.map != ZombiesMap.PRISON) return
+        pass(31)
     }
 
     fun remove() {

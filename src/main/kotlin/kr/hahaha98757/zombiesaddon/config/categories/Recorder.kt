@@ -8,11 +8,21 @@ class Recorder: AbstractCategory() {
 
     var enable = true
     var defaultCategory = "general"
-    var pbNotice = true
+    var deltaFormatting = true
+    var showGameTime = true
+    var showSegment = true
+    var compareRecord = true
+    var newBestNotice = true
+    var saveRecord = true
 
     override fun sync(config: Configuration) {
         enable = addOption(config.get(categoryName, "enable", true)).boolean
         defaultCategory = addOption(config.get(categoryName, "defaultCategory", "general")).string
-        pbNotice = addOption(config.get(categoryName, "pbNotice", true)).boolean
+        deltaFormatting = addOption(config.get(categoryName, "deltaFormatting", true)).boolean
+        showGameTime = addOption(config.get(categoryName, "showGameTime", true)).boolean
+        showSegment = addOption(config.get(categoryName, "showSegment", true)).boolean
+        compareRecord = addOption(config.get(categoryName, "compareRecord", true)).boolean
+        newBestNotice = addOption(config.get(categoryName, "newBestNotice", true)).boolean
+        saveRecord = addOption(config.get(categoryName, "saveRecord", true)).boolean
     }
 }

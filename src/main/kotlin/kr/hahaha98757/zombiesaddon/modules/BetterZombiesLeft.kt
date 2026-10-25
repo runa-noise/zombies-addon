@@ -29,7 +29,7 @@ object BetterZombiesLeft: Module("Better Zombies Left") {
             .drop(currentWaveIndex + 1)
             .sumOf { it.mobCount }
 
-        if (game.escape) {
+        if (game.helicopter) {
             leftOnCurrentWave = left
             leftAfterWave = expectedLeft
             isWork = true
