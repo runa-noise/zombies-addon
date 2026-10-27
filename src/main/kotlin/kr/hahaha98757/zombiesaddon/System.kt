@@ -80,5 +80,7 @@ object ThePlayerJoinHandler {
         }
 
         if (za.hasFeather) addTranslatedChatLine("zombiesaddon.messages.featherDetected")
+
+        addChatLine("Most configuration settings have been reset with the 4.9.0-alpha1 update.")
     }
 }
