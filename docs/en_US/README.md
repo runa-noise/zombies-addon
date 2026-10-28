@@ -1,6 +1,6 @@
 ![Zombies Addon Logo](../../src/main/resources/logo.png)
 # Zombies Addon
-Download: [Latest version](https://github.com/hahaha98757/zombies-addon/releases/latest), [All versions](https://github.com/hahaha98757/zombies-addon/releases)
+Download: [Latest version](https://github.com/runa-noise/zombies-addon/releases/latest), [All versions](https://github.com/runa-noise/zombies-addon/releases)
 
 ## Supported languages
 - English (US)

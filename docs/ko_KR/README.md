@@ -1,6 +1,6 @@
 ![Zombies Addon Logo](../../src/main/resources/logo.png)
 # Zombies Addon
-다운로드: [최신 버전](https://github.com/hahaha98757/zombies-addon/releases/latest), [모든 버전](https://github.com/hahaha98757/zombies-addon/releases)
+다운로드: [최신 버전](https://github.com/runa-noise/zombies-addon/releases/latest), [모든 버전](https://github.com/runa-noise/zombies-addon/releases)
 
 ## 지원 언어
 - 한국어 (대한민국)

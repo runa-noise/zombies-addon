@@ -1,0 +1,34 @@
+package kr.runanoise.zombiesaddon.modules
+
+import kr.runanoise.zombiesaddon.config.ZAConfig
+import kr.runanoise.zombiesaddon.utils.addTranslatedChat
+import kr.runanoise.zombiesaddon.utils.logger
+import kr.runanoise.zombiesaddon.utils.mc
+import java.net.Socket
+
+
+object AutoSplits {
+    fun pass() {
+        if (!ZAConfig.autoSplits.enable) return
+        sendCommand(ZAConfig.autoSplits.passCommand)
+    }
+
+    fun lose() {
+        if (!ZAConfig.autoSplits.enable) return
+        sendCommand(ZAConfig.autoSplits.loseCommand)
+    }
+
+    fun sendCommand(command: String) = Thread {
+        try {
+            Socket(ZAConfig.autoSplits.host, ZAConfig.autoSplits.port).use {
+                val output = it.getOutputStream().bufferedWriter()
+
+                output.write("$command\r\n")
+                output.flush()
+            }
+        } catch (e: Exception) {
+            logger.warn("LiveSplit에 명령어를 전달하는데 실패했습니다: $command", e)
+            mc.addScheduledTask { addTranslatedChat("zombiesaddon.modules.autoSplits.failed", command) }
+        }
+    }.start()
+}

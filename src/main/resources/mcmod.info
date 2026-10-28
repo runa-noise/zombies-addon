@@ -5,12 +5,12 @@
     "description": "여러 Zombies 모드를 통합하고, 새로운 기능을 추가하는 모드입니다.",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://github.com/hahaha98757/zombies-addon",
+    "url": "https://github.com/runa-noise/zombies-addon",
     "updateUrl": "",
     "authorList": [
-      "hahaha98757"
+      "Runa Noise"
     ],
-    "credits": "https://github.com/hahaha98757/zombies-addon/blob/main/README.md 를 확인해주세요.",
+    "credits": "https://github.com/runa-noise/zombies-addon/blob/main/README.md 를 확인해주세요.",
     "logoFile": "logo.png",
     "screenshots": [],
     "dependencies": []

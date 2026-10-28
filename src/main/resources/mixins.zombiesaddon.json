@@ -1,6 +1,6 @@
 {
-  "package": "kr.hahaha98757.zombiesaddon.mixins",
-  "plugin": "kr.hahaha98757.zombiesaddon.init.AutoDiscoveryMixinPlugin",
+  "package": "kr.runanoise.zombiesaddon.mixins",
+  "plugin": "kr.runanoise.zombiesaddon.init.AutoDiscoveryMixinPlugin",
   "refmap": "mixins.${modid}.refmap.json",
   "minVersion": "0.7",
   "compatibilityLevel": "JAVA_8"
