@@ -1,5 +1,33 @@
 # Change log
 
+## 4.9.0-beta1
+10-29-2026
+- Changes
+  - Developer name updated
+    - Package changed: kr.hahaha98757 -> kr.runanoise
+    - New repository URL reflected
+    - Backward compatibility: FileRemover from the previous package retained
+  - Configuration improvements: Added relevant messages
+  - Player Visibility
+    - "Semi PV" now renders fire as semi-transparent
+    - Player layers no longer overlap during rendering
+  - Auto Splits: Added settings to modify commands
+  - Not Last: Added settings to adjust activation timing
+  - Auto Rejoin: Added settings to adjust reconnection attempt intervals
+  - Recorder
+    - Added various settings
+    - Updated output text
+    - Now deletes .seg files older than 7 days
+- Bug Fixes
+  - Auto Splits: Corrected default port value
+  - Recorder
+    - Fixed an issue where the Recorder would save incorrect data upon a helicopter escape victory
+    - Updated to ensure the helicopter-call event is recorded when a victory occurs
+- Code Refactoring
+  - Refactored Mixins
+  - Updated Enums
+
+
 ## 4.8.7
 09-24-2026
 - Added: Patcher

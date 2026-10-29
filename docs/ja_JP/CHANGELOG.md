@@ -1,8 +1,36 @@
 # 更新ログ
 
+## 4.9.0-beta1
+2026-10-29
+- 変更
+  - 開発者名の変更
+    - パッケージの変更：kr.hahaha98757 -> kr.runanoise
+    - 新しいリポジトリURLを反映
+    - 下位互換性：既存パッケージのFileRemoverを維持
+  - 設定（コンフィグ）の改善：関連メッセージを追加
+    - Player Visibility
+    - Semi PV（半透明表示）において、炎が半透明でレンダリングされるように変更
+    - プレイヤーレイヤーが重なってレンダリングされないように修正
+  - Auto Splits：コマンド修正設定を追加
+  - Not Last：有効化タイミングの変更設定を追加
+  - Auto Rejoin：再接続試行タイミングの変更設定を追加
+  - Recorder
+    - 各種設定を追加
+    - 出力テキストを修正
+    - 7日以上経過した.segファイルを削除するように変更
+- バグ修正
+  - Auto Splits：ポートのデフォルト値を修正
+  - Recorder
+    - ヘリコプター脱出による勝利時、誤った記録が保存される問題を修正
+    - ヘリコプター呼び出しの記録を、勝利時に保存するように修正
+- コード修正
+  - Mixinのリファクタリング
+  - Enumsの修正
+
+
 ## 4.8.7
 2026-09-24
-- 追加: Patcher
+- 追加：Patcher
   - ライフルの音が聞こえない問題を修正。
 - 削除：SSTハングルパッチ
 
@@ -29,9 +57,9 @@
 2026-06-02
 - 追加
     - スピードランモード
-    - Internal Timer: テキストスタイルオプション
-- アンインストール: blockUnlegitMods, detectUnlegitMods オプション
-- 変更: Wave Delays
+    - Internal Timer：テキストスタイルオプション
+- アンインストール：blockUnlegitMods, detectUnlegitMods オプション
+- 変更：Wave Delays
     - テキストスタイルオプション
     - Wrath Modeを追加。
 - バグ修正
@@ -70,7 +98,7 @@
 2026-05-03
 - 変更
   - 互換性のある Zombies Utils バージョン：1.3.7 -> 1.4.2
-  - Internal Timer: Server モードが倒れ、死亡状態でも維持される。
+  - Internal Timer：Server モードが倒れ、死亡状態でも維持される。
 - 修正：Better Zombies Left
   - 残りのゾンビラインをスコアではなく文字列を含むかどうかを検出します。
   - 4.7.2にロールバック。

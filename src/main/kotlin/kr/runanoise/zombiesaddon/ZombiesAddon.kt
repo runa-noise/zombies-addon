@@ -27,7 +27,7 @@ import java.time.LocalDateTime
 
 const val MODID = "zombiesaddon"
 const val NAME = "Zombies Addon"
-const val VERSION = "4.9.0-alpha1"
+const val VERSION = "4.9.0-beta1"
 const val SST_VERSION = "2.1.1"
 const val ZU_VERSION = "1.4.4"
 
