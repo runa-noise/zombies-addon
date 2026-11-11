@@ -1,5 +1,14 @@
 # Change log
 
+## 4.9.0-rc1
+11-11-2026
+- Added: Removal of games that have not been accessed for a long time
+- Bug fixes
+  - Corrected configuration category names
+  - Fixed incorrect translation strings
+  - Adjusted timing for updating the "last accessed" timestamp
+- Code modifications: Updated code for registering map access commands
+
 ## 4.9.0-beta1
 10-29-2026
 - Changes
