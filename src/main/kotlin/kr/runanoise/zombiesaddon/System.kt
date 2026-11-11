@@ -58,7 +58,7 @@ object System {
     @SubscribeEvent
     fun onLastTick(@Suppress("unused") event: LastClientTickEvent) {
         Scoreboard.refresh()
-        GameManager.game?.lastJoinedTime = java.lang.System.currentTimeMillis()
+        if (!isNotPlayZombies()) GameManager.game?.lastJoinedTime = java.lang.System.currentTimeMillis()
         if (!ZombiesAddon.instance.debug) GameManager.removeGame()
     }
 }

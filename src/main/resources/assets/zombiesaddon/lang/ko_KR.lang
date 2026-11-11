@@ -30,7 +30,7 @@ zombiesaddon.message.failed.splitOrNew=§eZombies Addon:§c 라운드 또는 게
 
 zombiesaddon.commands.autosplits.usage=/autosplits <명령어>
 
-zombiesaddon.commands.poweruppatterns.usage=/poweruppatterns <ins|max|ss|dg|car|bg> [reset|숫자|on|off]
+zombiesaddon.commands.poweruppatterns.usage=/poweruppatterns <ins|max|ss|dg|car|bg> [reset|숫자]
 zombiesaddon.commands.poweruppatterns.success.reset=§ePowerup Patterns: %s§e의 패턴을§c 재설정§e했습니다
 zombiesaddon.commands.poweruppatterns.success.set=§ePowerup Patterns: %s§e의 패턴을 §a%s§e(으)로 설정했습니다
 

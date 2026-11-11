@@ -30,7 +30,7 @@ zombiesaddon.message.failed.splitOrNew=§eZombies Addon: §cFailed to start game
 
 zombiesaddon.commands.autosplits.usage=/autosplits <command>
 
-zombiesaddon.commands.poweruppatterns.usage=/poweruppatterns <ins|max|ss|dg|car|bg> [reset|number|on|off]
+zombiesaddon.commands.poweruppatterns.usage=/poweruppatterns <ins|max|ss|dg|car|bg> [reset|number]
 zombiesaddon.commands.poweruppatterns.success.reset=§ePowerup Patterns: §cReset %s§e pattern
 zombiesaddon.commands.poweruppatterns.success.set=§ePowerup Patterns: Set %s§e pattern to §a%s
 

@@ -30,7 +30,7 @@ zombiesaddon.message.failed.splitOrNew=§eZombies Addon：§cラウンドまた�
 
 zombiesaddon.commands.autosplits.usage=/autosplits <コマンド>
 
-zombiesaddon.commands.poweruppatterns.usage=/poweruppatterns <ins|max|ss|dg|car|bg> [reset|番号|on|off]
+zombiesaddon.commands.poweruppatterns.usage=/poweruppatterns <ins|max|ss|dg|car|bg> [reset|番号]
 zombiesaddon.commands.poweruppatterns.success.reset=§ePowerup Patterns：%s§eのパターンを§cリセット§eしました
 zombiesaddon.commands.poweruppatterns.success.set=§ePowerup Patterns：%s§eのパターンを§a%s§eに設定しました
 
