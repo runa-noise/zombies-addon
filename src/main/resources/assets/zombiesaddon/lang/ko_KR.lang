@@ -168,6 +168,8 @@ zombiesaddon.config.general.language=언어
 zombiesaddon.config.general.language.comment=모드에 사용할 언어입니다.
 zombiesaddon.config.general.speedrunMode=스피드런 모드
 zombiesaddon.config.general.speedrunMode.comment=스피드런 모드를 활성화 또는 비활성화합니다. speedrun.com 규칙에서 금지된 일부 기능을 비활성화합니다.
+zombiesaddon.config.general.gameRemoveDelay=게임 제거 딜레이
+zombiesaddon.config.general.gameRemoveDelay.comment=오랫동안 접속하지 않은 게임을 제거합니다. (분 단위)
 
 zombiesaddon.config.modules.enablePowerupPatterns=Powerup Patterns 활성화
 zombiesaddon.config.modules.enablePowerupPatterns.comment=Powerup Patterns를 활성화 또는 비활성화합니다.

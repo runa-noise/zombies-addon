@@ -67,10 +67,10 @@ object GameManager {
 
     fun removeGame() {
         if (!ZombiesAddon.instance.debug && !isNotPlayZombies()) return
-        val queuedEndedGames = games.values.filter { it.gameEnd }
+        val queuedEndedGames = games.values.filter { it.gameEnd || it.isOld }
         for (game in queuedEndedGames) {
             game.remove()
-            games.remove(game.serverNumber)
+            games -= game.serverNumber
             MinecraftForge.EVENT_BUS.post(GameRemoveEvent(game))
         }
     }

@@ -169,6 +169,8 @@ zombiesaddon.config.general.language=言語
 zombiesaddon.config.general.language.comment=このmodの言語
 zombiesaddon.config.general.speedrunMode=スピードランモード
 zombiesaddon.config.general.speedrunMode.comment=スピードランモードを有効または無効にします。speedrun.comルールで禁止されている機能の一部を無効にします。
+zombiesaddon.config.general.gameRemoveDelay=ゲーム削除の遅延
+zombiesaddon.config.general.gameRemoveDelay.comment=長時間アクセスされていないゲームを削除します。(分単位)
 
 zombiesaddon.config.modules.enablePowerupPatterns=Powerup Patternsを有効化
 zombiesaddon.config.modules.enablePowerupPatterns.comment=Powerup Patternsを有効または無効にします。

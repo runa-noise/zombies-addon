@@ -169,6 +169,8 @@ zombiesaddon.config.general.language=Language
 zombiesaddon.config.general.language.comment=The language for the mod.
 zombiesaddon.config.general.speedrunMode=Speedrun Mode
 zombiesaddon.config.general.speedrunMode.comment=Enable or disable Speedrun Mode. It disables some features prohibited by speedrun.com rules.
+zombiesaddon.config.general.gameRemoveDelay=Game Remove Delay
+zombiesaddon.config.general.gameRemoveDelay.comment=Remove games that have not been accessed for a long time. (in minutes)
 
 zombiesaddon.config.modules.enablePowerupPatterns=Enable Powerup Patterns
 zombiesaddon.config.modules.enablePowerupPatterns.comment=Enable or disable Powerup Patterns.

@@ -10,10 +10,12 @@ class General: AbstractCategory() {
     var enableMod = true
     var language = Language.AUTO
     var speedrunMode = false
+    var gameRemoveDelay = 60
 
     override fun sync(config: Configuration) {
         enableMod = addOption(config.get(categoryName, "enableMod", true)).boolean
         language = Language.fromText(addOption(config.get(categoryName, "language", Language.AUTO.toString(), "", Language.arrays)).string)
         speedrunMode = addOption(config.get(categoryName, "speedrunMode", false)).boolean
+        gameRemoveDelay = addOption(config.get(categoryName, "gameRemoveDelay", 60, "", 0, 600)).int
     }
 }

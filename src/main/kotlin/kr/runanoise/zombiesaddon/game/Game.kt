@@ -1,5 +1,6 @@
 package kr.runanoise.zombiesaddon.game
 
+import kr.runanoise.zombiesaddon.config.ZAConfig
 import kr.runanoise.zombiesaddon.data.ServerNumber
 import kr.runanoise.zombiesaddon.enums.Difficulty
 import kr.runanoise.zombiesaddon.enums.GameMode
@@ -11,6 +12,7 @@ import kr.runanoise.zombiesaddon.utils.*
 import net.minecraftforge.common.MinecraftForge
 
 class Game(var gameMode: GameMode, val serverNumber: ServerNumber, var round: Int, doNotCorrectTimer: Boolean = false) {
+    var lastJoinedTime = System.currentTimeMillis()
     val timer = Timer(mc.theWorld).apply(MinecraftForge.EVENT_BUS::register)
     var gameEnd = false
     var isWin = false
@@ -24,6 +26,8 @@ class Game(var gameMode: GameMode, val serverNumber: ServerNumber, var round: In
     }
 
     val roundData get() = runCatching { gameMode.rounds[round - 1] }.getOrNull()
+
+    val isOld get() = System.currentTimeMillis() - lastJoinedTime > ZAConfig.general.gameRemoveDelay * 60 * 1000
 
     fun changeDifficulty(difficulty: Difficulty) {
         gameMode = gameMode.appliedDifficulty(difficulty)
