@@ -1,5 +1,9 @@
 # Change log
 
+## 4.9.0
+11-18-2026
+- Change: Option for the retention period before .seg files are removed
+
 ## 4.9.0-rc1
 11-11-2026
 - Added: Removal of games that have not been accessed for a long time
