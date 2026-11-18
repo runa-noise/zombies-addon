@@ -1,5 +1,6 @@
 package kr.runanoise.zombiesaddon.config.categories
 
+import kr.runanoise.zombiesaddon.enums.SegFileMode
 import net.minecraftforge.common.config.Configuration
 
 class Recorder: AbstractCategory() {
@@ -14,6 +15,7 @@ class Recorder: AbstractCategory() {
     var compareRecord = true
     var newBestNotice = true
     var saveRecord = true
+    var removeSegFile = SegFileMode.DAY7
 
     override fun sync(config: Configuration) {
         enable = addOption(config.get(categoryName, "enable", true)).boolean
@@ -24,5 +26,6 @@ class Recorder: AbstractCategory() {
         compareRecord = addOption(config.get(categoryName, "compareRecord", true)).boolean
         newBestNotice = addOption(config.get(categoryName, "newBestNotice", true)).boolean
         saveRecord = addOption(config.get(categoryName, "saveRecord", true)).boolean
+        removeSegFile = SegFileMode.fromText(addOption(config.get(categoryName, "removeSegFile", SegFileMode.DAY7.toString(), "", SegFileMode.arrays)).string)
     }
 }

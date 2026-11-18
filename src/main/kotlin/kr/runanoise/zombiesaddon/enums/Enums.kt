@@ -102,3 +102,14 @@ enum class WDHighlightStyle(val text: String) {
 enum class WDOffsetMode {
     OFF, RL_MODE, WRATH_MODE
 }
+
+enum class SegFileMode(val text: String) {
+    DAY7("7 Days"), DAY14("14 Days"), DAY30("30 Days"), MONTH6("6 Months"), YEAR1("1 Year"), NEVER("Never");
+
+    override fun toString() = text
+
+    companion object {
+        fun fromText(text: String) = entries.firstOrNull { it.text == text } ?: DAY7
+        val arrays get() = entries.map { it.text }.toTypedArray()
+    }
+}

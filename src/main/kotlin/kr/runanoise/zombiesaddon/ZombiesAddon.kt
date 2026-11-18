@@ -6,6 +6,7 @@ import kr.runanoise.zombiesaddon.commands.Commands
 import kr.runanoise.zombiesaddon.config.ZAConfig
 import kr.runanoise.zombiesaddon.data.CustomPlaySound
 import kr.runanoise.zombiesaddon.data.CustomPlaySoundLoader
+import kr.runanoise.zombiesaddon.enums.SegFileMode
 import kr.runanoise.zombiesaddon.events.LastClientTickEvent
 import kr.runanoise.zombiesaddon.modules.*
 import kr.runanoise.zombiesaddon.update.UpdateChecker
@@ -138,7 +139,15 @@ class ZombiesAddon {
     }
 
     private fun removeSegFile() {
-        val cutoff = LocalDateTime.now().minusDays(7)
+        val mode = ZAConfig.recorder.removeSegFile
+        if (mode == SegFileMode.NEVER) return
+        val cutoff = when (mode) {
+            SegFileMode.DAY7 -> LocalDateTime.now().minusDays(7)
+            SegFileMode.DAY14 -> LocalDateTime.now().minusDays(14)
+            SegFileMode.DAY30 -> LocalDateTime.now().minusDays(30)
+            SegFileMode.MONTH6 -> LocalDateTime.now().minusMonths(6)
+            SegFileMode.YEAR1 -> LocalDateTime.now().minusYears(1)
+        }
         val pattern = Regex("""(\d{4})-(\d{2})-(\d{2})_(\d{2})-(\d{2})-(\d{2})_.+\.seg""")
         val folder = File(mc.mcDataDir, "zombies/runs")
         var count = 0
@@ -154,7 +163,16 @@ class ZombiesAddon {
                 file.delete()
             }
         }
-        logger.info("7일 이상 지난 .seg 파일 ${count}개를 삭제했습니다.")
+
+        val message = when (mode) {
+            SegFileMode.DAY7 -> "7일"
+            SegFileMode.DAY14 -> "14일"
+            SegFileMode.DAY30 -> "30일"
+            SegFileMode.MONTH6 -> "6개월"
+            SegFileMode.YEAR1 -> "1년"
+        }
+
+        logger.info("$message 이상 지난 .seg 파일 ${count}개를 삭제했습니다.")
     }
 
     private fun registerAll() {
