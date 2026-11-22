@@ -290,6 +290,8 @@ zombiesaddon.config.recorder.newBestNotice=New Best Notice
 zombiesaddon.config.recorder.newBestNotice.comment=Show a notice when you set a new PB or best segment.
 zombiesaddon.config.recorder.saveRecord=Save Record
 zombiesaddon.config.recorder.saveRecord.comment=Save new PB or best segment.
+zombiesaddon.config.recorder.removeSegFile=Remove .seg Files
+zombiesaddon.config.recorder.removeSegFile.comment=Remove .seg files that are older.
 
 zombiesaddon.config.patcher.fixRifleSound=Fix Rifle Sound
 zombiesaddon.config.patcher.fixRifleSound.comment=Fixes an issue where rifle sounds could not be heard.

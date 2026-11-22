@@ -289,6 +289,8 @@ zombiesaddon.config.recorder.newBestNotice=새로운 최고 기록 알림
 zombiesaddon.config.recorder.newBestNotice.comment=새로운 개인 최고 기록이나 구간 최고 기록이 달성되면 알려줍니다.
 zombiesaddon.config.recorder.saveRecord=기록 저장
 zombiesaddon.config.recorder.saveRecord.comment=새로운 개인 최고 기록이나 구간 최고 기록을 저장합니다.
+zombiesaddon.config.recorder.removeSegFile=.seg 파일 제거
+zombiesaddon.config.recorder.removeSegFile.comment=오래된 .seg 파일을 제거합니다.
 
 zombiesaddon.config.patcher.fixRifleSound=소총 소리 수정
 zombiesaddon.config.patcher.fixRifleSound.comment=소총 소리가 들리지 않는 문제를 수정합니다.

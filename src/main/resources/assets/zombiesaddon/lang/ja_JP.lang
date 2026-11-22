@@ -282,7 +282,7 @@ zombiesaddon.config.recorder.deltaFormatting=デルタフォーマット
 zombiesaddon.config.recorder.deltaFormatting.comment=デルタをm:ss.ss形式で表示します。
 zombiesaddon.config.recorder.showGameTime=時間を表示
 zombiesaddon.config.recorder.showGameTime.comment=ラウンドを突破する時間を表示します。
-zombiesaddon.config.recorder.showSegment=区間新記を表示
+zombiesaddon.config.recorder.showSegment=区間記録を表示
 zombiesaddon.config.recorder.showSegment.comment=ラウンドを通過する時間を表示します。
 zombiesaddon.config.recorder.compareRecord=記録比較
 zombiesaddon.config.recorder.compareRecord.comment=記録を個人新記録や区間新記録と比較します。
@@ -290,6 +290,8 @@ zombiesaddon.config.recorder.newBestNotice=新しい新記録の通知
 zombiesaddon.config.recorder.newBestNotice.comment=新しい個人新記録や区間新記録が達成されたときに通知します。
 zombiesaddon.config.recorder.saveRecord=記録の保存
 zombiesaddon.config.recorder.saveRecord.comment=新しい個人新記録や区間新記録を記録します。
+zombiesaddon.config.recorder.removeSegFile=.segファイルの削除
+zombiesaddon.config.recorder.removeSegFile.comment=古い.segファイルを削除します。
 
 zombiesaddon.config.patcher.fixRifleSound=ライフルの音を修正
 zombiesaddon.config.patcher.fixRifleSound.comment=ライフルの音が聞こえない問題を修正します。
