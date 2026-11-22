@@ -1,5 +1,9 @@
 # Change log
 
+## 4.9.1
+11-22-2026
+- Bug fix: Missing translation strings
+
 ## 4.9.0
 11-18-2026
 - Change: Option for the retention period before .seg files are removed
