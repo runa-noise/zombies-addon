@@ -20,6 +20,7 @@ A mod that integrates several Zombies mods and provides them as modules.
 - Toggle with hotkey (default Z).
 - Semi PV displays players as semi-transparent.
 - Semi PV has a higher priority than SST's Player Invisible.
+- Fast mode of Semi PV provides better compatibility and performance, but the player layers appear overlapped.
 - Semi PV modes are as follows:
   - Linear: Transparency varies proportionally with distance.
   - Fixed: Transparency remains constant (minimum value) regardless of distance.
@@ -28,13 +29,14 @@ A mod that integrates several Zombies mods and provides them as modules.
 
 #### Config
 - Default Toggle State: Toggle state when the game starts.
-- Displays Text: Displays texts with state of Player Visibility.
+- Display Text: Display a text with state of Player Visibility.
 - Range: The range for Player Visibility in blocks.
-- Toggle Semi PV: Enable or disable Semi Player Visibility.
+- Enable Semi PV: Enable or disable Semi Player Visibility.
+- Fast Semi PV: It offers better compatibility and performance, but the player layers appear overlapped.
+- Semi PV Mode: The mode for Semi Player Visibility.
 - Semi PV Range: The range for Semi Player Visibility in blocks.
 - Semi PV Minimum Alpha: The minimum alpha for Semi Player Visibility.
 - Semi PV Maximum Alpha: The maximum alpha for Semi Player Visibility.
-- Semi PV Mode: The mode for Semi Player Visibility.
 
 ----
 ### Block Alarm
@@ -48,15 +50,20 @@ A mod that integrates several Zombies mods and provides them as modules.
 ### Not Last
 - Displays the player who killed the last enemy.
 
+#### Config
+- Enable Not Last: Enable or disable Not Last.
+- Activation Times: If a player is not found within this time in ticks, it results in failure.
+
 ----
 ### Auto Splits
-- Sends the startorsplit command to LiveSplit at the start of a round or when you win the game.
-- Sends the pause command to LiveSplit when the game is over.
+- Sends commands to LiveSplit at the start of a round and when the game ends.
 
 #### Config
 - Enable Auto Splits: Enable or disable Auto Splits.
 - Host: The host of LiveSplit server.
 - Port: The port of LiveSplit server.
+- Pass Command: The command to send when you pass a round.
+- Lose Command: The command to send when you lose the game.
 
 #### Commands
 - autosplits <command>: Sends a command to LiveSplit.
@@ -136,11 +143,11 @@ After the timer is adjusted, you will switch back to server mode.
 ### Auto Rejoin
 - Toggle with hotkey (default O).
 - You will be automatically reconnected when the round starts.
-- Reconnect attempts will last up to 5 seconds.
 
 #### Config
 - Default Toggle State: Toggle state when the game starts.
 - Displays Text: Displays texts with state of Auto Rejoin.
+- Duration Times: During this time, it will attempt to rejoin.
 
 ----
 ### Powerup Patterns
@@ -169,21 +176,27 @@ After the timer is adjusted, you will switch back to server mode.
 
 ----
 ### Recorder
+- Measures game time and segment for each round.
+- Compares and saves with existing records.
 - Saves and compares PB (personal best) and best segment for each round.
 - Records are saved by category, which can be specified by config or command.
-- When you pass a round, compares it to your previous best record.
 - PB and best segment are saved as UTF-16 encoded .times files in the .minecraft/zombies/splits/(category) folder.
   If not in Hypixel or in debug mode, they are saved in the practice-splits folder.
 - For each game, segments are saved in the format of YYYY-MM-DD_HH-MM-SS_(Server Number).seg
- as UTF-16 encoded files in the .minecraft/zombies/runs folder.
+ as UTF-16 encoded files in the .minecraft/zombies/runs folder. Old files will be deleted.
 - The records of Zombies Utils are disabled.
 - Saved records can be used in Zombies Utils, and vice versa.
-- Records are not saved in practice servers.
 
 #### Config
 - Enable Recorder: Enable or disable Recorder.
 - Default Category: Category to use when not specified using the command. Must not contain '/' or '\'.
-- PB Notice: Notifies when a new personal best or best segment is achieved.
+- Delta Formatting: Display the delta in m:ss.ss format.
+- Show Game Time: Show the time to complete the round.
+- Show Segment: Show the time for the round to take.
+- Compare Record: Compare the time and segment with the PB and best segment.
+- New Best Notice: Show a notice when you set a new PB or best segment.
+- Save Record: Save new PB or best segment.
+- Remove .seg Files: Remove .seg files that are older.
 
 #### Commands
 - recorder category \[Category]: Check or set the current category. Must not contain '/' or '\'.
